@@ -17,6 +17,7 @@
           <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-danger" @click="resetGame"># reset game</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
         </div>
       </div>
@@ -60,9 +61,13 @@ export default defineComponent({
     }
   },
   methods: {
-    zoomFontSize(payload: { baseFontSize: number }) {
+    zoomFontSize(payload: { baseFontSize: number }) : void {
       this.baseFontSize = payload.baseFontSize
       this.store.commit('zoomFontSize', this.baseFontSize)
+    },
+    resetGame() : void {
+      this.$store.commit('endGame')
+      this.$router.replace("/")
     }
   },
   errorCaptured(err : unknown) {
