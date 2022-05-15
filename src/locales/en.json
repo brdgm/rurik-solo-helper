@@ -1,0 +1,252 @@
+{
+  "gameTitle": "Rurik: Dawn of Kiev",
+  "home": {
+    "title": "Rurik: Dawn of Kiev Solo Helper",
+    "play1": "Play the <b>Solo Mode</b> of <a href='https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev' target='_blank'><b>Rurik: Dawn of Kiev</b></a>.",
+    "play2": "To play the solo mode you only need the base game. This helper application replaces the solo card deck and the strategy board and manages the bonus actions and coins of the rebellion.",
+    "play3": "The expansion <b>Stone & Blade</b> is also supported. From the optional modules, you can use the 'Warfare' and 'Rebel Factions' modules, but not the 'Epic Structures' or 'Intrigue Cards' modules."
+  },
+  "setup": {
+    "title": "Setup Game",
+    "selectExpansion": {
+      "title": "Select Expansion",
+      "baseGame": "Base Game",
+      "stoneBlade": "Stone & Blade"
+    },
+    "difficultyLevel": {
+      "title": "Difficulty Level",
+      "easy": "Easy",
+      "hard": "Hard",
+      "useCards": "Difficulty Level {count}"
+    },
+    "rebellion": {
+      "title": "Rebellion Setup",
+      "botLeader": {
+        "title": "Rebellion Leader"
+      },
+      "botColor": {
+        "title": "Rebellion Color"
+      },
+      "steps": {
+        "title": "Further Setup Steps",
+        "rebels": "Give the Rebellion <b>16 rebel miniatures</b> (instead of the troop miniatures).",
+        "mat": "Take a <b>household mat</b> for the rebellion. You only need the boat side, the application will manage the bonus spaces and track the money of the rebellion.",
+        "boonTokens": "Place three <b>trade boon tokens</b> below the three central boat columns on the household mat (<i>wood, fish, honey</i>).",
+        "leaderRegion": "Place the Rebellion’s leader and two rebels in <b>{region}</b>.",
+        "rebelRegion": "Place two rebels in <b>{region}</b>."
+      }
+    },
+    "player": {
+      "title": "Player Setup",
+      "playerColor": {
+        "title": "Player Color"
+      },
+      "steps": {
+        "title": "Further Setup Steps",
+        "neutralTroops": "<b>Neutral troops</b>: Select an unused color and place one troop miniature of this color in each of the five remaining regions in play.",
+        "playerTroops": "Place <b>your troops and leader</b> as normal, except you cannot place them in {region1}, {region2} or {region3} (<i>unless you gain structures or troops from an inheritance card that places them in the regions</i>)."
+      }
+    }
+  },
+  "strategy": {
+    "title": "Strategy Phase: Place Advisor",
+    "advisorsBot": "Rebellion:",
+    "advisorsPlayer": "You:",
+    "putAdvisorCoins": {
+      "title": "Place Advisor",
+      "text": "Do you want to add a bribe?",
+      "coins": "Coins"
+    },
+    "putAdvisorNotPossible": {
+      "title": "Unable to place advisor"
+    },
+    "error": {
+      "columnFull": "This strategy board column is full.",
+      "notEnoughCoins": "Advisor strength is not sufficient - add a bribe with at least {requiredCoins} coin. | Advisor strength is not sufficient - add a bribe with at least {requiredCoins} coins."
+    },
+    "boardPreview": "Strategy Board"
+  },
+  "botCoinsPreview": {
+    "label": "Bot:",
+    "stealCoin": {
+      "title": "Steal Coin",
+      "text": "If your leader is Boris and he attacks the rebellion, you can steal one coin from them."
+    }
+  },
+  "actionPlayer": {
+    "title": "Action: You"
+  },
+  "actionBot": {
+    "title": "Action: Bot",
+    "locationOrder": "Location Order",
+    "muster": {
+      "text1": "The Rebellion spends muster points to muster one troop in each region that they occupy but do <i>not</i> rule, in location order, until all muster points are spent <i>OR</i> the Rebellion rules all regions that they occupy — whichever happens first.",
+      "text2": "Then, if the Rebellion still has any muster points remaining, they muster one troop in each region that they rule, in location order, until all muster points are spent.",
+      "text3": "If their leader has been removed from the game board, the Rebellion will <i>always</i> muster them first."
+    },
+    "move": {
+      "text1AttackMove": "The Rebellion moves one troop at a time to <b>each region</b> that they do <i>not</i> occupy, in location order, until they occupy all regions <i>OR</i> all movement points are spent.",
+      "text1Other": "The Rebellion moves troops to a <b>single region</b> that they do <i>not</i> rule, in location order, until all movement points are spent.",
+      "note1": "For the Rebellion, each movement point allows them to move one of their troops to any region, regardless of distance.",
+      "note2": "They always leave at least one troop in each region.",
+      "note3": "They never move a troop if it would cause them to cede rule of the region to you. However, they will still move a troop if it results in a tie for the rule of the region.",
+      "note4": "They always move a troop from the closest region with available troops. In case of a tie for distance, they move a troop from the region lowest in location order.",
+      "note5": "They always move their leader if there is a choice of which troop to move from a region."
+    },
+    "attack": {
+      "text1AttackMove": "The Rebellion first attacks in regions that they <b>do <i>not</i> rule</b>, in location order, and then in regions that they <b>rule</b>, in location order.",
+      "text1Other": "The Rebellion first attacks in regions that they <b>rule</b>, in location order, and then in regions that they <b>do <i>not</i> rule</b>, in location order.",
+      "note1": "The Rebellion spends attack points to attack either your troops or the neutral troops. If both your troops and the neutral troops occupy a region, the Rebellion always <i>attacks you first</i>.",
+      "note2": "The Rebellion will use all attacks, if possible, in a <i>single region</i> before attacking in other regions.",
+      "note3": "When the Rebellion attacks you, you must remove one of your troops from that region.",
+      "note3text2StoneBlade": "Then the Rebellion advances their warfare marker, gaining the reward shown on the warfare reward token <i>(if applicable)</i>, and checks for a casualty <i>(you choose which scheme deck they reveal cards from for this)</i>.",
+      "note3text2": "Then the Rebellion advances their warfare marker and checks for a casualty <i>(you choose which scheme deck they reveal cards from for this)</i>.",
+      "note4": "When the Rebellion attacks a <i>neutral troop</i>, remove the troop from that region and place it next to their household mat. The Rebellion does not advance their warfare marker and does not check for a casualty."
+    },
+    "tax": {
+      "text1": "For the Rebellion, each tax action only costs <b>one tax point</b>, no matter who rules the region.",
+      "chooseRegionText": "Choose the <b>Region</b> in this order:",
+      "chooseRegion": {
+        "option1": "Regions that produce goods for which they <b>do <i>not</i> have a full boat column</b>, in location order.",
+        "option2": "Regions that produce goods for which they <b>have a full boat column</b>, in location order"
+      },
+      "note1": "When taxing in a region that contains one of their markets, the Rebellion always takes <b>an extra good</b> from the supply, instead of taking a coin.",
+      "note2": "The Rebellion <i>always</i> places goods on empty spaces of their boat, if possible.",
+      "note3StoneBlade": "The Rebellion gains trade boon tokens but may <i>not</i> spend them. The tokens remain on their dock for scoring at the end of the game."
+    },
+    "build": {
+      "text1": "For the Rebellion, each build action only costs <b>one build point</b>, no matter who rules the region.",
+      "chooseRegionText": "Choose the <b>Region</b> in this order:",
+      "chooseRegion": {
+        "option1": "Regions that do <i>not</i> have any of their structures, in location order.",
+        "option2": "Regions that are occupied by your troops or the neutral troops, in location order.",
+        "option3": "Regions that are <i>not</i> occupied by your troops or the neutral troops, in location order."
+      },
+      "pickStructureText": "<b>Which structure</b> to build (in this order):",
+      "pickStructureNotes": {
+        "stable": "If they have <i>at least three more troops</i> than you do in the region.",
+        "tavern": "If there are <i>two structures</i> in the region. Instead of playing the top card from the scheme discard pile, the Rebellion unlocks a new bonus action.",
+        "church": "The Rebellion <i>cannot</i> build a church in a region unless it is occupied by your troops or the neutral troops. If the Rebellion builds a church in a region containing both your troops and the neutral troops, they will convert one of your troops."
+      },
+      "buildTavernUnlockBonus": {
+        "title": "Unlock Bonus Action",
+        "text": "When the Rebellion builds a Tavern, it unlocks a Bonus Action."
+      }
+    },
+    "scheme": {
+      "text1": "The Rebellion has unlocked a new bonus action an gained a coin. It does not draw a scheme card."
+    }
+  },
+  "claim": {
+    "title": "Claim Phase",
+    "introText": "Claim Phase resolution for the Rebellion:",
+    "priority": {
+      "title": "Assign Priority",
+      "questionAttack": "Do you occupy more regions than the Rebellion?",
+      "questionBuild": "Do you have structures in more adjacent regions than the Rebellion?",
+      "questionTax": "Do you have more goods on your boat then the Rebellion?",
+      "question": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "nextPriority": "Next Priority:"
+    },
+    "advanceTracks": {
+      "title": "Advance on Claim Tracks",
+      "question": "On how many tracks are you ahead of the Rebellion?",
+      "tracks": "No Track | {count} Track | {count} Tracks",
+      "unlock": "The Rebellion unlocks <b>{count} bonus action</b>. | The bot unlocks <b>{count} bonus actions</b>."
+    },
+    "income": {
+      "title": "Earn Income",
+      "question": "How many columns are completely filled with goods on the Rebellion's boat?",
+      "columns": "No Column | {count} Column | {count} Columns",
+      "earn": "The Rebellion earns <b>{count} coin</b>. | The bot earns <b>{count} coins</b>."
+    },
+    "deedCards": {
+      "title": "Choose Deed Cards",
+      "text": "The Rebellion does <i>not</i> take a deed card."
+    }
+  },
+  "end": {
+    "title": "End of Game",
+    "botScoring": {
+      "title": "Rebellion Scoring",
+      "tracks": "<b>Claim Tracks</b>: Normal Scoring",
+      "warfare": "<b>Warfare Track</b>: Normal Scoring",
+      "coins": "<b>Coins</b>: Score {coinsVP} victory point for {botCoins} coins. | <b>Coins</b>: Score {coinsVP} victory points for {botCoins} coins.",
+      "coinsNote": "<i>The coins scored do not count toward the second tiebreaker for most coins.</i>",
+      "goodsStoneBlade": "<b>Goods on Dock</b>: Score one victory point for every three goods and/or trade boon tokens on on their dock <i>(i.e. not on their boat)</i>, rounded up.",
+      "goods": "<b>Goods on Dock</b>: Score one victory point for every three goods on on their dock <i>(i.e. not on their boat)</i>, rounded up."
+    }
+  },
+  "color": {
+    "blue": "Blue",
+    "yellow": "Yellow",
+    "red": "Red",
+    "white": "White"
+  },
+  "gameAction": {
+    "muster": "Muster",
+    "move": "Move",
+    "attack": "Attack",
+    "tax": "Tax",
+    "build": "Build",
+    "scheme": "Scheme"
+  },
+  "structure": {
+    "stronghold": "Stronghold",
+    "market": "Market",
+    "church": "Church",
+    "stable": "Stable",
+    "tavern": "Tavern"
+  },
+  "leader": {
+    "sviatopolk": {
+      "name": "Sviatopolk",
+      "lore": "Sviatopolk narrowly avoided imprisonment for plotting against his father’s rule. He has now initiated a full-scale rebellion across the realm, and his more faithful siblings have been tasked by Vladimir with quashing the upstart rebels.",
+      "ability": "When Sviatopolk attacks you, the Rebellion reveals one less scheme card.",
+      "abilityEndOfRound": "At the end of each round, the Rebellion muster one troop in Sviatopolks region."
+    },
+    "gleb": {
+      "name": "Gleb",
+      "lore": "After surviving an assassination attempt at the hands of his brother Sviatopolk, Gleb has grown suspicious of his siblings. Mobilizing new armies and his allies within the church, Gleb eludes capture while his inf luence grows at every turn.",
+      "ability": "When you attack the Rebellion in Gleb’s region, check for a casualty twice.",
+      "abilityEndOfRound": "At the end of each round, reveal an inheritance card and move Gleb to the listed region."
+    },
+    "maria": {
+      "name": "Maria",
+      "lore": "After 20 years in Poland against her will, Maria has returned to Kievan Rus with a contingent of Polish forces. Maria feels her siblings abandoned her previously, and she may push to fold her homeland into a Polish territory.",
+      "ability": "When the Rebellion builds in Maria’s region, they gain one attack point.",
+      "abilityEndOfRound": "At the end of each round, reveal an inheritance card and move Maria to the listed region."
+    },
+    "theofana": {
+      "name": "Theofana",
+      "lore": "Theofana seeks to unify the realm using the might of Novgorod. While her husband Ostromir works to build a groundswell of support amongst the posadniks and voievoda, she hopes to secure Kiev before any of her siblings can cement their rule.",
+      "ability": "When the Rebellion taxes or builds in Theofana’s region, they muster one troop in her region.",
+      "abilityEndOfRound": ""
+    },
+    "ability": "Leader Ability"
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "finishGame": "Finish Game",
+    "finishGameConfirm": "Finishing this game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close"
+  },
+  "footer": {
+    "credits": "Credits"
+  }
+}

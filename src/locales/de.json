@@ -1,0 +1,250 @@
+{
+  "gameTitle": "Rurik: Kampf um Kiev",
+  "home": {
+    "title": "Rurik: Kampf um Kiev Solo Helper",
+    "play1": "Spiele den <b>Solo-Modus</b> von <a href='https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev' target='_blank'><b>Rurik: Kampf um Kiev</b></a>",
+    "play2": "Um den Solo-Modus zu spielen, benötigst du nur das Basisspiel. Diese Applikation ersetzt das Solo-Kartendeck und das Strategietableau und verwaltet die Bonus-Aktionen und die Münzen der Aufständischen.",
+    "play3": "Die Erweiterung <b>Stein & Klinge</b> wird auch unterstützt. Von den optionalen Modulen können 'Krieg' und 'Aufständische Gruppen' verwendet werden, nicht aber die Module 'Monumentale Gebäude' und 'Verschwörungen'."
+  },
+  "setup": {
+    "title": "Spielaufbau",
+    "selectExpansion": {
+      "title": "Erweiterung wählen",
+      "baseGame": "Grundspiel",
+      "stoneBlade": "Stein & Klinge"
+    },
+    "difficultyLevel": {
+      "title": "Schwierigkeitsgrad",
+      "easy": "Leicht",
+      "hard": "Schwer",
+      "useCards": "Schwierigkeitsgrad {count}"
+    },
+    "rebellion": {
+      "title": "Aufbau der Aufständischen",
+      "botLeader": {
+        "title": "Anführer der Aufständischen"
+      },
+      "botColor": {
+        "title": "Farbe der Aufständischen"
+      },
+      "steps": {
+        "title": "Weitere Schritte",
+        "rebels": "Verwende <b>16 aufständische Figuren</b> für die Aufständischen (anstelle der Truppen-Figuren).",
+        "mat": "Nehme ein <b>Haushaltstableau</b> für die Rebellion. Es wird nur die Boot-Seite verwendet, die Applikation verwaltet die Boni und die Münzen der Rebellion.",
+        "boonTokens": "Lege 3 <b>Handelsvorteilsmarker</b> unter die 3 zentralen Bootsspalten auf dem Haushaltstableau (<i>Holz, Fisch, Honig</i>).",
+        "leaderRegion": "Stelle den Anführer der Aufständischen und zwei aufständische Figuren nach <b>{region}</b>.",
+        "rebelRegion": "Stelle zwei aufständische Figuren nach <b>{region}</b>."
+      }
+    },
+    "player": {
+      "title": "Spieler-Aufbau",
+      "playerColor": {
+        "title": "Spieler-Farbe"
+      },
+      "steps": {
+        "title": "Weitere Schritte",
+        "neutralTroops": "<b>Neutrale Truppen</b>: Wähle eine nicht verwendete Farbe und stelle je 1 Truppe dieser Farbe auf die 5 übrigen bespielten Regionen.",
+        "playerTroops": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst Sie aber nicht nach {region1}, {region2} oder {region3} stellen (<i>außer du bekommst Gebäude oder Truppen durch eine Erbschaft, die sie in diese Region stellt</i>)."
+      }
+    }
+  },
+  "strategy": {
+    "title": "Strategiephase: Ratgeber platzieren",
+    "advisorsBot": "Aufständische:",
+    "advisorsPlayer": "Du:",
+    "putAdvisorCoins": {
+      "title": "Ratgeber platzieren",
+      "text": "Möchtest du ein Bestechungsgeld beilegen?",
+      "coins": "Münzen"
+    },
+    "putAdvisorNotPossible": {
+      "title": "Ratgeber kann nicht platziert werden"
+    },
+    "error": {
+      "columnFull": "Diese Spalte des Strategietableau ist voll.",
+      "notEnoughCoins": "Der Ratgeber ist nicht stark genug - lege ein Bestechungsgeld von mindestens {requiredCoins} Münze bei. | Der Ratgeber ist nicht stark genug - lege ein Bestechungsgeld von mindestens {requiredCoins} Münzen bei."
+    },
+    "boardPreview": "Strategietableau"
+  },
+  "botCoinsPreview": {
+    "label": "Bot:",
+    "stealCoin": {
+      "title": "Münze stehlen",
+      "text": "Wenn dein Anführer Boris die Aufständischen angreift, kann er eine Münze von ihnen stehlen."
+    }
+  },
+  "actionPlayer": {
+    "title": "Aktion: Du"
+  },
+  "actionBot": {
+    "title": "Aktion: Bot",
+    "locationOrder": "Ortsreihenfolge",
+    "muster": {
+      "text1": "Die Aufständischen geben Musterungspunkte aus, um in Ortsreihenfolge in jeder Region, die sie besetzen, aber <i>nicht</i> beherrschen, 1 Truppe zu mustern, bis alle Punkte ausgegeben sind <i>ODER</i> sie jede von ihnen besetzte Region beherrschen - je nachdem was zuerst eintritt.",
+      "text2": "Falls sie danach noch Musterungspunkte übrighaben, mustern sie in Ortsreihenfolge in jeder von ihnen beherrschten Region 1 Truppe, bis alle Punkte ausgegeben sind.",
+      "text3": "Falls ihr Anführer vom Spielbrett entfernt wurde, werden die Aufständischen ihn <i>immer</i> zuerst mustern."
+    },
+    "move": {
+      "text1AttackMove": "Die Aufständischen ziehen jeweils 1 Truppe in Ortsreihenfolge in jede <i>nicht</i> von ihnen <b>besetzte Region</b>, bis sie alle Regionen besetzen <i>ODER</i> alle Bewegungspunkte ausgegeben haben.",
+      "text1Other": "Die Aufständischen ziehen ihre Truppen in Ortsreihenfolge in <b>eine einzige</b> <i>nicht</i> von ihnen beherrschte Region, bis sie alle Bewegungspunkte ausgegeben haben.",
+      "note1": "Die Aufständischen dürfen für 1 Bewegungspunkt 1 ihrer Truppen überall hinziehen, unabhängig von der Entfernung.",
+      "note2": "Sie lassen immer min. 1 Truppe in jeder Region zurück.",
+      "note3": "Sie ziehen eine Truppe niemals, falls sie dadurch die Herrschaft über die Region an dich abtreten würden. Sie ziehen jedoch weiterhin eine Truppe, falls es dadurch zu einem Gleichstand um die Herrschaft der Region kommt.",
+      "note4": "Sie ziehen eine Truppe immer aus der nächstgelegen Region mit verfügbaren Truppen. Falls mehrere Regionen gleich nah sind, ziehen sie eine Truppe aus der Region mit niedrigerer Ortsreihenfolge.",
+      "note5": "Falls sie wählen dürfen, welche Truppe sie aus einer Region ziehen, wählen sie immer ihren Anführer."
+    },
+    "attack": {
+      "text1AttackMove": "Die Aufständischen greifen in Ortsreihenfolge zuerst in Regionen an, die sie <b><i>nicht</i> beherrschen</b> und dann in Ortsreihenfolge in Regionen, die sie <b>beherrschen</b>.",
+      "text1Other": "Die Aufständischen greifen in Ortsreihenfolge zuerst in Regionen an, die sie <b>beherrschen</b> und dann in Ortsreihenfolge in Regionen, die sie <b><i>nicht</i> beherrschen</b>.",
+      "note1": "Die Aufständischen geben Angriffspunkte aus, um entweder deine oder die neutralen Truppen anzugreifen. Falls deine und die neutralen Truppen beide eine Region besetzen, greifen die Aufständischen immer <i>dich zuerst an</i>.",
+      "note2": "Falls möglich, führen die Aufständischen zuerste alle Angriffe in einer Region aus, bevor sie in anderen Regionen angreifen.",
+      "note3": "Sobald die Aufständischen dich angreifen, entferne 1 deiner Truppe aus der entsprechenden Region.",
+      "note3text2StoneBlade": "Danach rücken die Aufständischen ihren Kriegsmarker vor, erhalten die Belohnung, die der Kriegsbeutemarker anzeigt <i>(falls anwendbar)</i>, und prüfen ihre Verluste <i>(du bestimmst, von welchem Intriegenstapel sie hierfür ziehen)</i>.",
+      "note3text2": "Danach rücken die Aufständischen ihren Kriegsmarker vor und prüfen ihre Verluste <i>(du bestimmst, von welchem Intriegenstapel sie hierfür ziehen)</i>.",
+      "note4": "Sobald die Aufständischen eine <i>neutrale Truppe</i> angreifen, entferne diese Truppe aus der entsprechenden Region und stelle sie neben deren Haushaltstableau. Die Aufständischen rücken ihren Kriegsmarker nicht vor und prüfen keine Verluste."
+    },
+    "tax": {
+      "text1": "Die Steueraktion kostet die Aufständischen nur <b>1 Steuerpunkt</b>, egal, wer die Region beherrscht.",
+      "chooseRegionText": "Auswahl der <b>Region</b> in dieser Reihenfolge:",
+      "chooseRegion": {
+        "option1": "Regions that produce goods for which they <b>do <i>not</i> have a full boat column</b>, in location order.",
+        "option2": "Regions that produce goods for which they <b>have a full boat column</b>, in location order"
+      },
+      "note1": "When taxing in a region that contains one of their markets, the Rebellion always takes <b>an extra good</b> from the supply, instead of taking a coin.",
+      "note2": "The Rebellion <i>always</i> places goods on empty spaces of their boat, if possible.",
+      "note3StoneBlade": "The Rebellion gains trade boon tokens but may <i>not</i> spend them. The tokens remain on their dock for scoring at the end of the game."
+    },
+    "build": {
+      "text1": "Jede Bauaktion kostet die Aufständischen nur <b>1 Baupunkt</b>, egal, wer die Region beherrscht.",
+      "chooseRegionText": "Auswahl der <b>Region</b> in dieser Reihenfolge:",
+      "chooseRegion": {
+        "option1": "Regionen, in denen sie <i>keine</i> Gebäude haben, in Ortsreihenfolge.",
+        "option2": "Regionen, die von deinen oder den neutralen Truppen besetzt sind, in Ortsreihenfolge.",
+        "option3": "Regionen, die <i>nicht</i> von deinen oder neutralen Truppen besetzt sind, in Ortsreihenfolge."
+      },
+      "pickStructureText": "<b>Welches Gebäude</b> wird gebaut (in dieser Reihenfolge):",
+      "pickStructureNotes": {
+        "stable": "Falls sie <i>min. 3 Truppen mehr</i> als du in der Region haben.",
+        "tavern": "Falls es <i>2 Gebäude</i> in der Region gibt. Statt die oberste Karte vom Intrigen-Abwurfstapel zu spielen, schalten die Aufständischen eine weitere Bonusaktion frei.",
+        "church": "Die Aufständischen können <i>keine</i> Kirche in einer Region bauen, außer sie wird von deinen oder von den neutralen Truppen besetzt. Falls die Aufständischen eine Kirche in einer Region bauen, die sowohl deine als auch die neutralen Truppen enthält, bekehren sie 1 von deinen Truppen."
+      },
+      "buildTavernUnlockBonus": {
+        "title": "Bonusaktion freischalten",
+        "text": "Wenn die Aufständischen eine Taverne bauen, schalten sie eine Bonusaktion frei."
+      }
+    },
+    "scheme": {
+      "text1": "Die Aufständischen haben eine neue Bonusaktion freigeschaltet. Sie ziehen keine Intrigen-Karte."
+    }
+  },
+  "claim": {
+    "title": "Anspruchsphase",
+    "introText": "Schritte der Anspruchsphase für die Aufständischen:",
+    "priority": {
+      "title": "Priorität zuweisen",
+      "questionAttack": "Besetzt du mehr Regionen aus die Aufständischen?",
+      "questionBuild": "Hast du mehr Gebäude in angrenzenden Regionen als die Aufständischen?",
+      "questionTax": "Hast du mehr Güter auf deinem Boot als die Aufständischen?",
+      "question": {
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "nextPriority": "Nächste Priorität:"
+    },
+    "advanceTracks": {
+      "title": "Vorrücken auf Anspruchsleisten",
+      "question": "Auf wie vielen Anspruchsleisten bist du den Aufständischen vorraus?",
+      "tracks": "Keine | {count} Leiste | {count} Leisten",
+      "unlock": "Die Aufständischen schalten <b>{count} Bonusaktion</b> frei. | Die Aufständischen schalten <b>{count} Bonusaktionen</b> frei."
+    },
+    "income": {
+      "title": "Einkommen",
+      "question": "Wie viele Spalten auf dem Boot der Aufständischen sind komplett mit Gütern gefüllt?",
+      "columns": "Keine | {count} Spalte | {count} Spalten",
+      "earn": "Die Aufständischen erhalten <b>{count} Münze</b>. | Die Aufständischen erhalten <b>{count} Münzen</b>."
+    },
+    "deedCards": {
+      "title": "Taten wählen",
+      "text": "Die Aufständischen ziehen <i>niemals</i> Karten."
+    }
+  },
+  "end": {
+    "title": "Spielende",
+    "botScoring": {
+      "title": "Siegpunkte Aufständische",
+      "tracks": "<b>Anspruchsleisten</b>: Normale Wertung",
+      "warfare": "<b>Kriegsleiste</b>: Normale Werting",
+      "coins": "<b>Münzen</b>: {coinsVP} Siegpunkt für {botCoins} Münzen. | <b>Münzen</b>: {coinsVP} Siegpunkte für {botCoins} Münzen.",
+      "coinsNote": "<i>Die gewerteten Münzen zählen nicht zur zweiten Auflösung eines Gleichstands für die meisten Münzen.</i>",
+      "goodsStoneBlade": "<b>Güter auf dem Dock</b>: 1 Siegpunkt pro 3 Güter und/oder Handlesvorteilsmarker auf ihrem Dock <i>(nicht auf Ihrem Boot)</i>, aufgerundet.",
+      "goods": "<b>Güter auf dem Dock</b>: 1 Siegpunkt pro 3 Güter auf ihrem Dock <i>(nicht auf Ihrem Boot)</i>, aufgerundet."
+    }
+  },
+  "color": {
+    "blue": "Blau",
+    "yellow": "Gelb",
+    "red": "Rot",
+    "white": "Weiß"
+  },
+  "gameAction": {
+    "muster": "Mustern",
+    "move": "Ziehen",
+    "attack": "Angreifen",
+    "tax": "Besteuern",
+    "build": "Bauen",
+    "scheme": "Intrigieren"
+  },
+  "structure": {
+    "church": "Kirche",
+    "market": "Markt",
+    "stronghold": "Festung",
+    "stable": "Stall",
+    "tavern": "Taverne"
+  },
+  "leader": {
+    "sviatopolk": {
+      "name": "Swjatopolk",
+      "lore": "Swjatopolk entkam knapp einer Gefangenschaft für das Komplott gegen die Herrschaft seines Vaters. Er führt eine Rebellion an, die sich durch das ganze Reich zieht. Seine Geschwister bekamen die Aufgabe, die Aufständischen zu vernichten.",
+      "ability": "Sobald Swjatopolk dich angreift, decken die Aufständischen 1 Intrigenkarte weniger auf.",
+      "abilityEndOfRound": "Am Ende jeder Runde mustern die Aufständischen 1 Truppe in Swjatopolks Region."
+    },
+    "gleb": {
+      "name": "Gleb",
+      "lore": "Nachdem er einen Mordversuch seines Bruders Swjatopolk überlebt hat, ist Gleb seinen Geschwistern gegenüber misstrauisch geworden. Er entkommt einer Gefangenschaft, indem er neue Heere und seine Verbündeten in den Reihen der Kirche mobilisiert, und sein Einfluss steigt mit jedem Zug.",
+      "ability": "Sobald du die Aufständischen in Glebs Region angreifst, prüft deine Verluste zweimal.",
+      "abilityEndOfRound": "Decke am Ende jeder Runde 1 Erbeschaft auf und ziehe Gleb in die gleiche Region."
+    },
+    "maria": {
+      "name": "Maria",
+      "lore": "Nachdem sie 20 Jahre gegen ihren Willen in Polen war, ist Maria mit einem Aufgebot an polnischen Truppen in die Kiever Rus zurückgekehrt. Maria fühlt sich von ihren Geschwistern verlassen und könnte versuchen, aus ihrem Heimatland ein polnisches Gebiet zu machen.",
+      "ability": "Sobald die Aufständischen in Marias Region bauen, erhalten sie einen Angriffspunkt.",
+      "abilityEndOfRound": "Decke am Ende jeder Runde 1 Erbschaft auf und ziehe Maria in die entsprechende Region."
+    },
+    "theofana": {
+      "name": "Theofana",
+      "lore": "Theofana strebt danach, das Reich mit der Macht von Novgorod zu vereinen. Während ihr Mann Ostromir daran arbeitet, für sie Unterstützung unter den Posadniks und Voievoda zu gewinnen, hofft sie daraf, Kiev sichern zu können, bevor eines ihrer Geschwister seine Herrschaft festigen kann.",
+      "ability": "Sobald die Aufständischen in Theofanas Region besteuern oder bauen, mustern sie 1 Truppe in ihrer Region.",
+      "abilityEndOfRound": ""
+    },
+    "ability": "Anführer-Fähigkeit"
+  },
+  "notfound": {
+    "title": "Nicht Gefunden"
+  },
+  "action": {
+    "playGame": "Spielen",
+    "startGame": "Spiel starten",
+    "next": "Weiter",
+    "abortGame": "Spiel abbrechen",
+    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist Du sicher?",
+    "endGame": "Spiel beenden",
+    "endGameConfirm": "Dieses Spiel wird beendet - bist Du sicher?",
+    "cancel": "Abbrechen",
+    "backToHome": "Zurück zum Anfang",
+    "back": "Zurück",
+    "close": "Schließen"
+  },
+  "footer": {
+    "credits": "Credits"
+  }
+}

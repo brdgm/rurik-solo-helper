@@ -1,4 +1,4 @@
-# Rurik Solo Helper
+# Rurik: Dawn of Kiev Solo Helper
 
 Application: https://brdgm.me/rurik/
 
