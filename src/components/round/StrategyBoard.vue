@@ -225,7 +225,7 @@ export default defineComponent({
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/grid";
 .board {
-  max-width: 60rem;
+  max-width: 52rem;
   th {
     text-transform: uppercase;
     text-align: center;
