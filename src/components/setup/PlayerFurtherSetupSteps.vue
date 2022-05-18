@@ -2,7 +2,7 @@
   <h3 class="mt-4">{{t('setup.player.steps.title')}}</h3>
   <ol class="clearfix">
     <li v-html="t('setup.player.steps.neutralTroops')"></li>
-    <li v-html="t('setup.player.steps.playerTroops', {region1: leaderStartRegion, region2: rebelStartRegion1, region3: rebelStartRegion2})"></li>
+    <li v-html="t('setup.player.steps.playerTroops' + (hasStoneBlade?'StoneBlade':''), {region1: leaderStartRegion, region2: rebelStartRegion1, region3: rebelStartRegion2})"></li>
   </ol>
 
   <button @click="startGame" class="btn btn-primary btn-lg mt-3">

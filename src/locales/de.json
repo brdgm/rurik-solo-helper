@@ -44,7 +44,8 @@
       "steps": {
         "title": "Weitere Schritte",
         "neutralTroops": "<b>Neutrale Truppen</b>: Wähle eine nicht verwendete Farbe und stelle je 1 Truppe dieser Farbe auf die 5 übrigen bespielten Regionen.",
-        "playerTroops": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst Sie aber nicht nach {region1}, {region2} oder {region3} stellen (<i>außer du bekommst Gebäude oder Truppen durch eine Erbschaft, die sie in diese Region stellt</i>)."
+        "playerTroops": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst Sie aber nicht nach {region1}, {region2} oder {region3} stellen.",
+        "playerTroopsStoneBlade": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst Sie aber nicht nach {region1}, {region2} oder {region3} stellen (<i>außer du bekommst Gebäude oder Truppen durch eine Erbschaft, die sie in diese Region stellt</i>)."
       }
     }
   },
@@ -107,12 +108,12 @@
       "text1": "Die Steueraktion kostet die Aufständischen nur <b>1 Steuerpunkt</b>, egal, wer die Region beherrscht.",
       "chooseRegionText": "Auswahl der <b>Region</b> in dieser Reihenfolge:",
       "chooseRegion": {
-        "option1": "Regions that produce goods for which they <b>do <i>not</i> have a full boat column</b>, in location order.",
-        "option2": "Regions that produce goods for which they <b>have a full boat column</b>, in location order"
+        "option1": "Regionen, die Güter produzieren, von denen sie <b><i>keine</i> volle Bootsspalte</b> haben, in Ortsreihenfolge.",
+        "option2": "Regionen, die Güter produzieren, von denen sie eine <b>volle Bootsspalte</b> haben, in Ortsreihenfolge."
       },
-      "note1": "When taxing in a region that contains one of their markets, the Rebellion always takes <b>an extra good</b> from the supply, instead of taking a coin.",
-      "note2": "The Rebellion <i>always</i> places goods on empty spaces of their boat, if possible.",
-      "note3StoneBlade": "The Rebellion gains trade boon tokens but may <i>not</i> spend them. The tokens remain on their dock for scoring at the end of the game."
+      "note1": "Sobald sie Steuern aus einer Region mit einem ihrer Märkte einziehen, erhalten die Aufständischen statt 1 Münze immer <b>1 zusätzliches Gut</b> aus dem Vorrat.",
+      "note2": "Die Aufständischen legen Güter immer auf leere Felder auf ihrem Boot, falls möglich.",
+      "note3StoneBlade": "Die Aufständischen erhalten Handelsvorteilsmarker, können sie aber nicht ausgeben. Die Marker bleiben für die Wertung am Ende der Partie auf ihrem Dock."
     },
     "build": {
       "text1": "Jede Bauaktion kostet die Aufständischen nur <b>1 Baupunkt</b>, egal, wer die Region beherrscht.",
@@ -123,6 +124,7 @@
         "option3": "Regionen, die <i>nicht</i> von deinen oder neutralen Truppen besetzt sind, in Ortsreihenfolge."
       },
       "pickStructureText": "<b>Welches Gebäude</b> wird gebaut (in dieser Reihenfolge):",
+      "pickStructureTextChoose": "Eines dieser Gebäude (in bevorzugter Reihenfolge):",
       "pickStructureNotes": {
         "stable": "Falls sie <i>min. 3 Truppen mehr</i> als du in der Region haben.",
         "tavern": "Falls es <i>2 Gebäude</i> in der Region gibt. Statt die oberste Karte vom Intrigen-Abwurfstapel zu spielen, schalten die Aufständischen eine weitere Bonusaktion frei.",
