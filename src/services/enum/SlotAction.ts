@@ -1,0 +1,21 @@
+enum SlotAction {
+  MUSTER_3 = 'muster-3',
+  MUSTER_2 = 'muster-2',
+  MUSTER_1_COIN = 'muster-1-coin',
+  MOVE_3 = 'move-3',
+  MOVE_2 = 'move-2',
+  MOVE_1 = 'move-1',
+  ATTACK_2 = 'attack-2',
+  ATTACK_1 = 'attack-1',
+  ATTACK_1_COIN = 'attack-1-coin',
+  TAX_2 = 'tax-2',
+  TAX_1 = 'tax-1',
+  TAX_1_COIN = 'tax-1-coin',
+  BUILD_2 = 'build-2',
+  BUILD_1 = 'build-1',
+  BUILD_1_COIN = 'build-1-coin',
+  SCHEME_3 = 'scheme-3',
+  SCHEME_2 = 'scheme-2',
+  SCHEME_1 = 'scheme-1',
+}
+export default SlotAction
