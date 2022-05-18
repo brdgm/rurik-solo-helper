@@ -65,13 +65,13 @@
 
   <p v-html="t('claim.deedCards.text')"></p>
 
-  <button v-if="nextButtonVisible" @click="completeClaimPhase" class="btn btn-primary btn-lg mt-3">
-    {{t('action.next')}}
-  </button>
-
   <p v-if="showLeaderAbility" class="mt-3 alert alert-warning">
     <b>{{t('leader.ability')}}</b>: {{t('leader.' + botLeader + '.abilityEndOfRound')}}
   </p>
+
+  <button v-if="nextButtonVisible" @click="completeClaimPhase" class="btn btn-primary btn-lg mt-3">
+    {{t('action.next')}}
+  </button>
 </template>
 
 <script lang="ts">

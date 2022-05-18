@@ -19,7 +19,7 @@
       <div class="small" v-html="t('actionBot.build.pickStructureNotes.tavern')"></div>
       <button type="button" class="btn btn-secondary btn-sm"  data-bs-toggle="modal" data-bs-target="#buildTavernUnlockBonusModal">{{t('actionBot.build.buildTavernUnlockBonus.title')}}</button>
     </li>
-    <li>One of the following structures (in preferred order):</li>
+    <li v-html="t('actionBot.build.pickStructureTextChoose')"></li>
     <ol>
       <li v-for="structure of buildOrder" :key="structure">
         <Icon type="structure" :name="structure + '-' + botColor" class="structure"/>

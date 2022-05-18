@@ -44,7 +44,8 @@
       "steps": {
         "title": "Further Setup Steps",
         "neutralTroops": "<b>Neutral troops</b>: Select an unused color and place one troop miniature of this color in each of the five remaining regions in play.",
-        "playerTroops": "Place <b>your troops and leader</b> as normal, except you cannot place them in {region1}, {region2} or {region3} (<i>unless you gain structures or troops from an inheritance card that places them in the regions</i>)."
+        "playerTroops": "Place <b>your troops and leader</b> as normal, except you cannot place them in {region1}, {region2} or {region3}.",
+        "playerTroopsStoneBlade": "Place <b>your troops and leader</b> as normal, except you cannot place them in {region1}, {region2} or {region3} (<i>unless you gain structures or troops from an inheritance card that places them in the regions</i>)."
       }
     }
   },
@@ -108,7 +109,7 @@
       "chooseRegionText": "Choose the <b>Region</b> in this order:",
       "chooseRegion": {
         "option1": "Regions that produce goods for which they <b>do <i>not</i> have a full boat column</b>, in location order.",
-        "option2": "Regions that produce goods for which they <b>have a full boat column</b>, in location order"
+        "option2": "Regions that produce goods for which they <b>have a full boat column</b>, in location order."
       },
       "note1": "When taxing in a region that contains one of their markets, the Rebellion always takes <b>an extra good</b> from the supply, instead of taking a coin.",
       "note2": "The Rebellion <i>always</i> places goods on empty spaces of their boat, if possible.",
@@ -123,6 +124,7 @@
         "option3": "Regions that are <i>not</i> occupied by your troops or the neutral troops, in location order."
       },
       "pickStructureText": "<b>Which structure</b> to build (in this order):",
+      "pickStructureTextChoose": "One of the following structures (in preferred order):",
       "pickStructureNotes": {
         "stable": "If they have <i>at least three more troops</i> than you do in the region.",
         "tavern": "If there are <i>two structures</i> in the region. Instead of playing the top card from the scheme discard pile, the Rebellion unlocks a new bonus action.",
@@ -210,7 +212,7 @@
     },
     "gleb": {
       "name": "Gleb",
-      "lore": "After surviving an assassination attempt at the hands of his brother Sviatopolk, Gleb has grown suspicious of his siblings. Mobilizing new armies and his allies within the church, Gleb eludes capture while his inf luence grows at every turn.",
+      "lore": "After surviving an assassination attempt at the hands of his brother Sviatopolk, Gleb has grown suspicious of his siblings. Mobilizing new armies and his allies within the church, Gleb eludes capture while his influence grows at every turn.",
       "ability": "When you attack the Rebellion in Gleb’s region, check for a casualty twice.",
       "abilityEndOfRound": "At the end of each round, reveal an inheritance card and move Gleb to the listed region."
     },

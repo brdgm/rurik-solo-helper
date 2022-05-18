@@ -41,8 +41,9 @@ export default defineComponent({
   },
   computed: {
     leaders() : BotLeader[] {
-      const leaders = [ BotLeader.SVIATOPOLK, BotLeader.MARIA ]
+      const leaders = [ BotLeader.SVIATOPOLK ]
       if (this.$store.state.setup.expansions.includes(Expansion.STONE_BLADE)) {
+        leaders.push(BotLeader.MARIA)
         leaders.push(BotLeader.GLEB)
         leaders.push(BotLeader.THEOFANA)
       }
