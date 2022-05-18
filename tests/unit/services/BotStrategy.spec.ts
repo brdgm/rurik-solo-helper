@@ -63,6 +63,19 @@ describe('BotStrategy', () => {
     bot.placeNextAdvisor(board, card)
     assertSlotBot(board, SlotAction.MUSTER_3, Advisor.ONE, 0)
   })
+
+  it('placeNextAdvisor_level1_card7_coins_noCoins', () => {
+    const board = StrategyBoard.new(Round.ONE)
+    const card = Cards.get(7)
+    const bot = new Bot(DifficultyLevel.EASY, 1, ActionPriority.BUILD, 0)
+
+    board.putAdvisor(SlotAction.SCHEME_3, Advisor.ONE, Player.PLAYER, 0)
+
+    // bot wants to but his advisor on top of scheme column, but has no coins
+    bot.placeNextAdvisor(board, card)
+    assertSlotBot(board, SlotAction.SCHEME_2, Advisor.ONE, 0)
+    expect(bot.coins).to.eq(0)
+  })
 })
 
 function assertSlotBot(board : StrategyBoard, slotAction : SlotAction, advisor : Advisor, coins : number) : void {

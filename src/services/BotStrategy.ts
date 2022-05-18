@@ -69,7 +69,7 @@ export default class BotStrategy {
       // should we try to occupy the top slot at whatever cost?
       else if (coin) {
         const requiredCoins = slotStrength - advisorStrength + 1
-        if (requiredCoins >= this._coins) {
+        if (requiredCoins <= this._coins) {
           board.putAdvisor(slot.action, advisor, Player.BOT, requiredCoins)
           this._coins -= requiredCoins
           return true
