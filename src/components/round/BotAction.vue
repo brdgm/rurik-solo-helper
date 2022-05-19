@@ -15,7 +15,8 @@
         <h3>{{t('gameAction.' + action)}}</h3>
 
         <Icon type="advisor" :name="slot.advisor" :color="botColor" class="advisor"/>
-        <Icon type="slot-action" :name="slot.action" class="action"/>
+        <Icon v-if="actionAllowed" type="slot-action" :name="slot.action" class="action"/>
+        <Icon v-else type="bonus-action" :name="oneCoinBonusAction" class="bonusAction mt-5"/>
 
         <template v-for="(bonusAction, index) of bonusActions" :key="index">
           <Icon type="bonus-action" :name="bonusAction.bonusAction" class="bonusAction"/>
@@ -103,9 +104,9 @@ export default defineComponent({
 
     const bot = new BotAction(navigationState.difficultyLevel, navigationState.botCoins, navigationState.bonusActions)
     const bonusActions = bot.getBonusActions(action)
-    bot.executeAutomaticActions(slot.action, bonusActions)
+    const actionAllowed = bot.executeAutomaticActions(slot.action, bonusActions)
 
-    return { t, botColor, round, actionPriority, cardDeck, actionRound, strategyBoard, slot, action, bot, bonusActions }
+    return { t, botColor, round, actionPriority, cardDeck, actionRound, strategyBoard, slot, action, actionAllowed, bot, bonusActions }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -154,6 +155,9 @@ export default defineComponent({
         return false
       }
       return this.bonusActions.find(item => item.bonusAction == BonusAction.MOVE) != undefined
+    },
+    oneCoinBonusAction() : BonusAction {
+      return BonusAction.COIN_1
     }
   },
   methods: {

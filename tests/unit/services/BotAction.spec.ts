@@ -47,6 +47,28 @@ describe('BotAction', () => {
     expect(bot.coins).to.eq(7)  // 3 + 1 for bonus reveal + 1+2 for bonus actions
   })
 
+  it('executeAutomaticActions_coinCost', () => {
+    const bot = setupBot(DifficultyLevel.MEDIUM, 3)
+
+    const allowAction = bot.executeAutomaticActions(SlotAction.ATTACK_1_COIN, [
+      {action:Action.SCHEME,bonusAction:BonusAction.COIN_1}
+    ])
+
+    expect(allowAction).to.true
+    expect(bot.coins).to.eq(3)  // 3 - 1 coin cost + 1 bonus action
+  })
+
+  it('executeAutomaticActions_coinCost_noCoinLeft', () => {
+    const bot = setupBot(DifficultyLevel.MEDIUM, 0)
+
+    const allowAction = bot.executeAutomaticActions(SlotAction.ATTACK_1_COIN, [
+      {action:Action.SCHEME,bonusAction:BonusAction.COIN_1}
+    ])
+
+    expect(allowAction).to.false
+    expect(bot.coins).to.eq(2)  // 0 + instead of action + 1 bonus action
+  })
+
   it('stealCoin', () => {
     const bot = setupBot(DifficultyLevel.MEDIUM, 3)
 
