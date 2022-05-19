@@ -70,9 +70,11 @@
   },
   "botCoinsPreview": {
     "label": "Bot:",
-    "stealCoin": {
-      "title": "Steal Coin",
-      "text": "If your leader is Boris and he attacks the rebellion, you can steal one coin from them."
+    "stealGiveCoin": {
+      "title": "Steal/Give Coin",
+      "text": "If your leader is Boris and he attacks the rebellion, you can steal one coin from them. The Rebellion may get coins from warfare reward or Predslava leader.",
+      "stealCoin": "Steal Coin",
+      "giveCoin": "Give Coin"
     }
   },
   "actionPlayer": {

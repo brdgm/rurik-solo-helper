@@ -99,7 +99,7 @@ export default class BotAction {
   }
 
   /**
-   * Steal 1 coin from bot (when attacking with Boris leader).
+   * Steal 1 coin from bot (e.g. when attacking with Boris leader).
    * @return true if steal was successful (bot had at least one coin)
    */
   public stealCoin() : boolean {
@@ -111,5 +111,12 @@ export default class BotAction {
       return false
     }
   }
+
+  /**
+   * Give 1 coin to bot (e.g. from warfare bonus).
+   */
+   public giveCoin() : void {
+     this._coins++
+   }
 
 }

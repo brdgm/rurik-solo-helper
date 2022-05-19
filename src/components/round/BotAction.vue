@@ -1,6 +1,6 @@
 <template>
   <div class="float-end">
-    <BotCoinPreview :botCoins="bot.coins"/>
+    <BotCoinPreview :botCoins="bot.coins" @stealCoin="stealCoin" @giveCoin="giveCoin"/>
     <div class="mt-3 me-2">
       <h6>{{t('actionBot.locationOrder')}}</h6>
       <ol>
@@ -173,6 +173,14 @@ export default defineComponent({
     },
     unlockBonusAction() : void {
       this.bot.unlockNextBonusAction()
+      this.$forceUpdate()
+    },
+    stealCoin() : void {
+      this.bot.stealCoin()
+      this.$forceUpdate()
+    },
+    giveCoin() : void {
+      this.bot.giveCoin()
       this.$forceUpdate()
     }
   }

@@ -60,6 +60,14 @@ describe('BotAction', () => {
     expect(bot.stealCoin()).to.false
     expect(bot.coins).to.eq(0)
   })
+
+  it('giveCoin', () => {
+    const bot = setupBot(DifficultyLevel.MEDIUM, 3)
+
+    bot.giveCoin()
+    expect(bot.coins).to.eq(4)
+  })
+
 })
 
 function setupBot(difficultyLevel : DifficultyLevel, botCoins : number) {

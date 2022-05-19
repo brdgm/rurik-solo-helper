@@ -70,9 +70,11 @@
   },
   "botCoinsPreview": {
     "label": "Bot:",
-    "stealCoin": {
-      "title": "Münze stehlen",
-      "text": "Wenn dein Anführer Boris die Aufständischen angreift, kann er eine Münze von ihnen stehlen."
+    "stealGiveCoin": {
+      "title": "Münze stehlen/geben",
+      "text": "Wenn dein Anführer Boris die Aufständischen angreift, kann er eine Münze von ihnen stehlen. Die Aufständischen können Münzen durch Kriegsbeute-MArker oder der Anführerin Predslava bekommen.",
+      "stealCoin": "Münze stehlen",
+      "giveCoin": "Münze geben"
     }
   },
   "actionPlayer": {
