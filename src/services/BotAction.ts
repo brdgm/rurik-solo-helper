@@ -78,8 +78,20 @@ export default class BotAction {
    * Namely, further bonus actions are unlocked for scheme actions and coins from bonus actions may be earned.
    * @param slotAction Slot action
    * @param bonusActions Bonus actions
+   * @return true if the bot can executed the main action. This is false if the main action has a coin cost, and the bot cannot pay this cost.
    */
-  public executeAutomaticActions(slotAction : SlotAction, bonusActions : HouseholdMatBonusAction[]) : void {
+  public executeAutomaticActions(slotAction : SlotAction, bonusActions : HouseholdMatBonusAction[]) : boolean {
+    let canExecuteMainAction = true
+    if (this.hasCoinCost(slotAction)) {
+      if (this._coins > 1) {
+        this._coins--  // pay coin cost
+      }
+      else {
+        canExecuteMainAction = false
+        this._coins++  // get a coin instead of executing the main action
+      }
+    }
+
     const slotActionMapping = SlotActionMappings.get(slotAction)
     if (slotActionMapping.action == Action.SCHEME) {
       this.unlockNextBonusAction()
@@ -96,10 +108,24 @@ export default class BotAction {
           // no automatic action
       }
     }
+
+    return canExecuteMainAction
+  }
+
+  private hasCoinCost(slotAction : SlotAction) : boolean {
+    switch (slotAction) {
+      case SlotAction.MUSTER_1_COIN:
+      case SlotAction.ATTACK_1_COIN:
+      case SlotAction.TAX_1_COIN:
+      case SlotAction.BUILD_1_COIN:
+        return true;
+      default:
+        return false;
+    }
   }
 
   /**
-   * Steal 1 coin from bot (when attacking with Boris leader).
+   * Steal 1 coin from bot (e.g. when attacking with Boris leader).
    * @return true if steal was successful (bot had at least one coin)
    */
   public stealCoin() : boolean {
@@ -111,5 +137,12 @@ export default class BotAction {
       return false
     }
   }
+
+  /**
+   * Give 1 coin to bot (e.g. from warfare bonus).
+   */
+   public giveCoin() : void {
+     this._coins++
+   }
 
 }

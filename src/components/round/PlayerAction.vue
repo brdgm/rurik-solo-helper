@@ -1,6 +1,6 @@
 <template>
   <div class="float-end">
-    <BotCoinPreview :botCoins="botCoins" :allowSteal="isAttack" @stealCoin="stealCoin"/>
+    <BotCoinPreview :botCoins="botCoins" @stealCoin="stealCoin" @giveCoin="giveCoin"/>
   </div>
 
   <div class="card mt-4" v-for="slot in nextActionSlots" :key="slot.action">
@@ -94,7 +94,14 @@ export default defineComponent({
       this.$router.push(this.nextButtonRouteTo)
     },
     stealCoin() : void {
+      if (this.botCoins <= 0) {
+        return;
+      }
       this.botCoins--
+      this.$forceUpdate()
+    },
+    giveCoin() : void {
+      this.botCoins++
       this.$forceUpdate()
     }
   }

@@ -3,7 +3,7 @@
 
   <StrategyBoard/>
 
-  <router-link v-if="nextButtonVisible" :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-3">
+  <router-link v-if="nextButtonVisible" :to="nextButtonRouteTo" class="btn btn-primary btn-lg mt-4">
     {{t('action.next')}}
   </router-link>
 

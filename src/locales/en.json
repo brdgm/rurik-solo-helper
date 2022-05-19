@@ -53,6 +53,7 @@
     "title": "Strategy Phase: Place Advisor",
     "advisorsBot": "Rebellion:",
     "advisorsPlayer": "You:",
+    "advisorsHint": "Use Drag & Drop to place your advisors.",
     "putAdvisorCoins": {
       "title": "Place Advisor",
       "text": "Do you want to add a bribe?",
@@ -69,9 +70,11 @@
   },
   "botCoinsPreview": {
     "label": "Bot:",
-    "stealCoin": {
-      "title": "Steal Coin",
-      "text": "If your leader is Boris and he attacks the rebellion, you can steal one coin from them."
+    "stealGiveCoin": {
+      "title": "Steal/Give Coin",
+      "text": "If your leader is Boris and he attacks the rebellion, you can steal one coin from them. The Rebellion may get coins from warfare reward or Predslava leader.",
+      "stealCoin": "Steal Coin",
+      "giveCoin": "Give Coin"
     }
   },
   "actionPlayer": {
@@ -80,6 +83,9 @@
   "actionBot": {
     "title": "Action: Bot",
     "locationOrder": "Location Order",
+    "showMusterInstructions": "Show Muster Instructions",
+    "showMoveInstructions": "Show Move Instructions",
+    "showAttackInstructions": "Show Attack Instructions",
     "muster": {
       "text1": "The Rebellion spends muster points to muster one troop in each region that they occupy but do <i>not</i> rule, in location order, until all muster points are spent <i>OR</i> the Rebellion rules all regions that they occupy — whichever happens first.",
       "text2": "Then, if the Rebellion still has any muster points remaining, they muster one troop in each region that they rule, in location order, until all muster points are spent.",

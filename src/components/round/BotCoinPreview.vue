@@ -1,18 +1,18 @@
 <template>
   <span class="coinCoinLabel">{{t('botCoinsPreview.label')}}</span>
-  <a v-if="allowSteal && botCoins > 0" data-bs-toggle="modal" data-bs-target="#botCoinStealModal"><CoinCount class="coinCount" :value="botCoins"/></a>
-  <CoinCount v-else class="coinCount" :value="botCoins"/>
+  <a data-bs-toggle="modal" data-bs-target="#botCoinStealModal"><CoinCount class="coinCount" :value="botCoins"/></a>
 
   <div id="botCoinStealModal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{t('botCoinsPreview.stealCoin.title')}}</h5>
+          <h5 class="modal-title">{{t('botCoinsPreview.stealGiveCoin.title')}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" v-html="t('botCoinsPreview.stealCoin.text')"></div>
+        <div class="modal-body" v-html="t('botCoinsPreview.stealGiveCoin.text')"></div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="$emit('stealCoin')">{{t('botCoinsPreview.stealCoin.title')}}</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="$emit('stealCoin')" :disabled="botCoins < 1">{{t('botCoinsPreview.stealGiveCoin.stealCoin')}}</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="$emit('giveCoin')">{{t('botCoinsPreview.stealGiveCoin.giveCoin')}}</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default defineComponent({
   components: {
     CoinCount
   },
-  emits: ['stealCoin'],
+  emits: ['stealCoin','giveCoin'],
   setup() {
     const { t } = useI18n()
     useStore()
@@ -41,10 +41,6 @@ export default defineComponent({
     botCoins: {
       type: Number,
       required: true
-    },
-    allowSteal: {
-      type: Boolean,
-      required: false
     }
   }
 })

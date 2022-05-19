@@ -31,10 +31,11 @@
     </tr>
   </table>
 
-  <div class="advisors player">
+  <div class="advisors player" v-if="playerAdvisorReserve.length > 0">
     <h3 class="mt-3">{{t('strategy.advisorsPlayer')}}</h3>
     <Icon v-for="advisor in playerAdvisorReserve" :key="advisor" type="advisor" :name="advisor" :color="playerColor" class="advisor"
         draggable @dragstart="dragStart($event,advisor)"/>
+    <div class="advisors-hint alert alert-light small" v-html="t('strategy.advisorsHint')"></div>
   </div>
 
   <div class="modal" id="putAdvisorCoinsModal" tabindex="-1">
@@ -308,6 +309,10 @@ export default defineComponent({
 }
 .advisors.player .advisor {
   cursor: pointer;
+}
+.advisors-hint {
+  display: inline-block;
+  margin-left: 0.5rem;
 }
 .modal .action {
   width: 100%;
