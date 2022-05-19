@@ -83,6 +83,9 @@
   "actionBot": {
     "title": "Action: Bot",
     "locationOrder": "Location Order",
+    "showMusterInstructions": "Show Muster Instructions",
+    "showMoveInstructions": "Show Move Instructions",
+    "showAttackInstructions": "Show Attack Instructions",
     "muster": {
       "text1": "The Rebellion spends muster points to muster one troop in each region that they occupy but do <i>not</i> rule, in location order, until all muster points are spent <i>OR</i> the Rebellion rules all regions that they occupy — whichever happens first.",
       "text2": "Then, if the Rebellion still has any muster points remaining, they muster one troop in each region that they rule, in location order, until all muster points are spent.",

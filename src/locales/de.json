@@ -83,6 +83,9 @@
   "actionBot": {
     "title": "Aktion: Bot",
     "locationOrder": "Ortsreihenfolge",
+    "showMusterInstructions": "Anweisungen für Mustern anzeigen",
+    "showMoveInstructions": "Anweisungen für Ziehen anzeigen",
+    "showAttackInstructions": "Anweisungen für Angriff anzeigen",
     "muster": {
       "text1": "Die Aufständischen geben Musterungspunkte aus, um in Ortsreihenfolge in jeder Region, die sie besetzen, aber <i>nicht</i> beherrschen, 1 Truppe zu mustern, bis alle Punkte ausgegeben sind <i>ODER</i> sie jede von ihnen besetzte Region beherrschen - je nachdem was zuerst eintritt.",
       "text2": "Falls sie danach noch Musterungspunkte übrighaben, mustern sie in Ortsreihenfolge in jeder von ihnen beherrschten Region 1 Truppe, bis alle Punkte ausgegeben sind.",

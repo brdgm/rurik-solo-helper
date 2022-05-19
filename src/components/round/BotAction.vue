@@ -31,9 +31,9 @@
     <div class="instructions mt-4 p-2">
       <ActionMuster v-if="isMuster"/>
       <ActionMove v-if="isMove" :actionPriority="actionPriority"/>
-      <ActionAttack v-if="isAttack" :actionPriority="actionPriority" :isStoneBladeExpansion="isStoneBladeExpansion"/>
-      <ActionTax v-if="isTax" :isStoneBladeExpansion="isStoneBladeExpansion"/>
-      <ActionBuild v-if="isBuild" :cardDeck="cardDeck" :actionPriority="actionPriority" :botColor="botColor" :isStoneBladeExpansion="isStoneBladeExpansion" @unlockBonusAction="unlockBonusAction"/>
+      <ActionAttack v-if="isAttack" :actionPriority="actionPriority" :botLeader="botLeader" :isStoneBladeExpansion="isStoneBladeExpansion"/>
+      <ActionTax v-if="isTax" :botLeader="botLeader" :isStoneBladeExpansion="isStoneBladeExpansion"/>
+      <ActionBuild v-if="isBuild" :cardDeck="cardDeck" :actionPriority="actionPriority" :botLeader="botLeader" :botColor="botColor" :isStoneBladeExpansion="isStoneBladeExpansion" @unlockBonusAction="unlockBonusAction"/>
       <ActionScheme v-if="isScheme"/>
 
       <template v-if="hasMoveBonusAction">
@@ -43,10 +43,6 @@
       </template>
     </div>
   </div>
-
-  <p v-if="showLeaderAbility" class="mt-3 alert alert-warning">
-    <b>{{t('leader.ability')}}</b>: {{t('leader.' + botLeader + '.ability')}}
-  </p>
 </template>
 
 <script lang="ts">
@@ -143,11 +139,6 @@ export default defineComponent({
     },
     botLeader() : BotLeader {
       return this.$store.state.setup.botLeader
-    },
-    showLeaderAbility() : boolean {
-      return (this.action == Action.ATTACK && this.botLeader == BotLeader.SVIATOPOLK)
-          || (this.action == Action.BUILD && (this.botLeader == BotLeader.MARIA || this.botLeader == BotLeader.THEOFANA))
-          || (this.action == Action.TAX && this.botLeader == BotLeader.THEOFANA)
     },
     hasMoveBonusAction() : boolean {
       if (this.action == Action.MOVE) {

@@ -65,7 +65,7 @@
 
   <p v-html="t('claim.deedCards.text')"></p>
 
-  <p v-if="showLeaderAbility" class="mt-3 alert alert-warning">
+  <p v-if="nextButtonVisible && leaderAbilityVisible" class="mt-3 alert alert-warning">
     <b>{{t('leader.ability')}}</b>: {{t('leader.' + botLeader + '.abilityEndOfRound')}}
   </p>
 
@@ -146,7 +146,7 @@ export default defineComponent({
     botLeader() : BotLeader {
       return this.$store.state.setup.botLeader
     },
-    showLeaderAbility() : boolean {
+    leaderAbilityVisible() : boolean {
       return this.botLeader == BotLeader.SVIATOPOLK || this.botLeader == BotLeader.GLEB || this.botLeader == BotLeader.MARIA
     }
   },
