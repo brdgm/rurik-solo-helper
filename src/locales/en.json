@@ -81,7 +81,7 @@
     "title": "Action: You"
   },
   "actionBot": {
-    "title": "Action: Bot",
+    "title": "Action: Rebellion",
     "locationOrder": "Location Order",
     "showMusterInstructions": "Show Muster Instructions",
     "showMoveInstructions": "Show Move Instructions",
@@ -163,13 +163,13 @@
       "title": "Advance on Claim Tracks",
       "question": "On how many tracks are you ahead of the Rebellion?",
       "tracks": "No Track | {count} Track | {count} Tracks",
-      "unlock": "The Rebellion unlocks <b>{count} bonus action</b>. | The bot unlocks <b>{count} bonus actions</b>."
+      "unlock": "The Rebellion unlocks <b>{count} bonus action</b>. | The Rebellion unlocks <b>{count} bonus actions</b>."
     },
     "income": {
       "title": "Earn Income",
       "question": "How many columns are completely filled with goods on the Rebellion's boat?",
       "columns": "No Column | {count} Column | {count} Columns",
-      "earn": "The Rebellion earns <b>{count} coin</b>. | The bot earns <b>{count} coins</b>."
+      "earn": "The Rebellion earns <b>{count} coin</b>. | The Rebellion earns <b>{count} coins</b>."
     },
     "deedCards": {
       "title": "Choose Deed Cards",
