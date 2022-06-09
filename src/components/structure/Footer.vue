@@ -34,7 +34,7 @@
           <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h4><a href="https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev" target="_blank">{{t('gameTitle')}}</a></h4>
+          <h4><a href="https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev" target="_blank" rel="noopener">{{t('gameTitle')}}</a></h4>
           <dl>
             <dt>Game design</dt>
             <dd>Stanislav Kordonskiy</dd>
@@ -45,7 +45,7 @@
             <dt>Solo Mode Design</dt>
             <dd>John Brieger</dd>
             <dt>Publisher</dt>
-            <dd><a href="https://www.piecekeepergames.com/" target="_blank">PieceKeeper Games</a></dd>
+            <dd><a href="https://www.piecekeepergames.com/" target="_blank" rel="noopener">PieceKeeper Games</a></dd>
           </dl>
           <h4 class="border-top pt-3">{{appTitle}}</h4>
           <dl>
@@ -54,7 +54,7 @@
             <dt>Version</dt>
             <dd>{{buildNumber}}</dd>
             <dt>Source Code (Apache-2.0 License)</dt>
-            <dd><a href="https://github.com/brdgm/rurik-solo-helper" target="_blank">https://github.com/brdgm/rurik-solo-helper</a></dd>
+            <dd><a href="https://github.com/brdgm/rurik-solo-helper" target="_blank" rel="noopener">https://github.com/brdgm/rurik-solo-helper</a></dd>
           </dl>
         </div>
         <div class="modal-footer">
