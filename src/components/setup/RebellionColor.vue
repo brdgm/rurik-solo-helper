@@ -26,8 +26,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
-    return { t, store }
+    useStore()
+    return { t  }
   },
   computed: {
     colors() : Color[] {
