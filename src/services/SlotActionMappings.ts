@@ -1,4 +1,4 @@
-import findMandatoryMap from "@/util/findMandatoryMap";
+import findMandatory from "brdgm-commons/src/util/map/findMandatory";
 import SlotActionMapping from "./SlotActionMapping";
 import Action from "./enum/Action";
 import SlotAction from "./enum/SlotAction";
@@ -125,7 +125,7 @@ export default {
    * @returns Slot action mapping
    */
   get(slotAction: SlotAction) : SlotActionMapping {
-    return findMandatoryMap(mappingsMap, slotAction)
+    return findMandatory(mappingsMap, slotAction)
   },
 
   /**

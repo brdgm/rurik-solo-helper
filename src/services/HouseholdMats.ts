@@ -1,4 +1,4 @@
-import findMandatoryMap from "@/util/findMandatoryMap"
+import findMandatory from "brdgm-commons/src/util/map/findMandatory"
 import Action from "./enum/Action"
 import DifficultyLevel from "./enum/DifficultyLevel"
 import BonusAction from "./enum/BonusAction"
@@ -141,7 +141,7 @@ export default {
    * @returns Household mat
    */
   get(level: DifficultyLevel) : HouseholdMat {
-    return findMandatoryMap(householdMatsMap, level)
+    return findMandatory(householdMatsMap, level)
   },
 
   /**
