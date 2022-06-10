@@ -5,8 +5,8 @@ import Player from "./enum/Player";
 import Round from "./enum/Round";
 import SlotAction from "./enum/SlotAction";
 import * as _ from "lodash"
-import findMandatory from "@/util/findMandatory";
-import TranslatableError from "@/util/TranslatableError";
+import findMandatory from "brdgm-commons/src/util/array/findMandatory";
+import TranslatableError from "brdgm-commons/src/util/error/TranslatableError";
 
 export default class StrategyBoard {
 

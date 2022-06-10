@@ -98,7 +98,7 @@ import SlotAction from '@/services/enum/SlotAction'
 import { StrategyBoardSlot } from "@/store";
 import Advisor from '@/services/enum/Advisor'
 import NavigationState from '@/util/NavigationState'
-import getErrorMessage from '@/util/getErrorMessage'
+import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
 import { Modal } from 'bootstrap'
 import BotStrategy from '@/services/BotStrategy'
 

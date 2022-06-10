@@ -32,7 +32,7 @@ import { useStore } from '@/store'
 import Header from '@/components/structure/Header.vue'
 import Footer from '@/components/structure/Footer.vue'
 import { Modal } from 'bootstrap'
-import getErrorMessage from './util/getErrorMessage'
+import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
 
 export default defineComponent({
   name: 'App',
