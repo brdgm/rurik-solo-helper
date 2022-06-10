@@ -1,11 +1,49 @@
 <template>
-  <Header/>
+  <Header :title="t('gameTitle')" @set-locale="setLocale($event.language)"/>
 
   <div id="content-container" class="container-fluid mt-5 mb-5">
     <router-view :key="$route.fullPath"/>
   </div>
 
-  <Footer @zoomFontSize="zoomFontSize"/>
+  <Footer :build-number="buildNumber" :credits-label="t('footer.credits')" credits-modal-id="creditsModal" zoom-enabled @zoomFontSize="zoomFontSize"/>
+
+  <div class="modal" id="creditsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{t('footer.credits')}}</h5>
+          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4><a href="https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev" target="_blank" rel="noopener">{{t('gameTitle')}}</a></h4>
+          <dl>
+            <dt>Game design</dt>
+            <dd>Stanislav Kordonskiy</dd>
+            <dt>Development</dt>
+            <dd>Kirk Dennison, John Brieger</dd>
+            <dt>Illustrations</dt>
+            <dd>Finn McAvinchey, Yaroslav Radeckyi, Alayna Lemmer-Dan</dd>
+            <dt>Solo Mode Design</dt>
+            <dd>John Brieger</dd>
+            <dt>Publisher</dt>
+            <dd><a href="https://www.piecekeepergames.com/" target="_blank" rel="noopener">PieceKeeper Games</a></dd>
+          </dl>
+          <h4 class="border-top pt-3">{{appTitle}}</h4>
+          <dl>
+            <dt>Application Development</dt>
+            <dd>Stefan Seifert</dd>
+            <dt>Version</dt>
+            <dd>{{buildNumber}}</dd>
+            <dt>Source Code (Apache-2.0 License)</dt>
+            <dd><a href="https://github.com/brdgm/rurik-solo-helper" target="_blank" rel="noopener">https://github.com/brdgm/rurik-solo-helper</a></dd>
+          </dl>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal" tabindex="-1" id="errorMessage">
     <div class="modal-dialog">
@@ -29,8 +67,8 @@
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
-import Header from '@/components/structure/Header.vue'
-import Footer from '@/components/structure/Footer.vue'
+import Header from 'brdgm-commons/src/components/structure/Header.vue'
+import Footer from 'brdgm-commons/src/components/structure/Footer.vue'
 import { Modal } from 'bootstrap'
 import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
 
@@ -52,14 +90,20 @@ export default defineComponent({
     
     const baseFontSize = ref(store.state.baseFontSize)
 
-    return { t, baseFontSize }
+    return { t, locale, baseFontSize }
   },
   data() {
     return {
+      buildNumber: process.env.VUE_APP_BUILD_NUMBER || '',
+      appTitle: process.env.VUE_APP_TITLE,
       errorMessage: 'Error'
     }
   },
   methods: {
+    setLocale(lang: string) {
+      this.$store.commit('language', lang)
+      this.locale = lang;
+    },
     zoomFontSize(payload: { baseFontSize: number }) {
       this.baseFontSize = payload.baseFontSize
       this.$store.commit('zoomFontSize', this.baseFontSize)
