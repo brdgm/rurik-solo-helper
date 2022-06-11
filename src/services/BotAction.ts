@@ -52,20 +52,20 @@ export default class BotAction {
   public unlockNextBonusAction() : HouseholdMatBonusAction | undefined {
     // find next unlocked bonus action in current priority
     const currentPriorityBonusActions = findMandatory(this._bonusActions, item => item.priority==this._actionPriority)
-    const lockedItem = currentPriorityBonusActions.bonusActions.find(item => item.locked)
-    if (lockedItem) {
-      lockedItem.locked = undefined
+    const lockedItemCurrentPriority = currentPriorityBonusActions.bonusActions.find(item => item.locked)
+    if (lockedItemCurrentPriority) {
+      lockedItemCurrentPriority.locked = undefined
       this._coins += 1
-      return lockedItem
+      return lockedItemCurrentPriority
     }
 
     // otherwise find next unlocked bonus action starting in leftmost column
     for (const column of this._bonusActions) {
-      const lockedItem = column.bonusActions.find(item => item.locked)
-      if (lockedItem) {
-        lockedItem.locked = undefined
+      const lockedItemLeftmost = column.bonusActions.find(item => item.locked)
+      if (lockedItemLeftmost) {
+        lockedItemLeftmost.locked = undefined
         this._coins += 1
-        return lockedItem
+        return lockedItemLeftmost
       }
     }
 

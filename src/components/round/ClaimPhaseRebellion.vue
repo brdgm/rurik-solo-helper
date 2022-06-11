@@ -120,7 +120,7 @@ export default defineComponent({
           || this.lastRound
     },
     priorityQuestionsAnswered() : boolean {
-      return this.priorityAttack == true || this.priorityBuild == true || this.priorityTax != undefined
+      return this.priorityAttack || this.priorityBuild || this.priorityTax != undefined
     },
     nextActionPriority() : ActionPriority {
       if (this.priorityAttack) {

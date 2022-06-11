@@ -1,4 +1,4 @@
-import Bot from '@/services/BotStrategy'
+import BotStrategy from '@/services/BotStrategy'
 import Cards from '@/services/Cards'
 import ActionPriority from '@/services/enum/ActionPriority'
 import Advisor from '@/services/enum/Advisor'
@@ -13,7 +13,7 @@ describe('BotStrategy', () => {
   it('placeNextAdvisor_level1_card1', () => {
     const board = StrategyBoard.new(Round.ONE)
     const card = Cards.get(1)
-    const bot = new Bot(DifficultyLevel.EASY, 1, ActionPriority.BUILD, 3)
+    const bot = new BotStrategy(1, ActionPriority.BUILD, 3)
 
     expect(bot.coins).to.eq(3)
 
@@ -41,7 +41,7 @@ describe('BotStrategy', () => {
   it('placeNextAdvisor_level1_card1_fullColumn_right', () => {
     const board = StrategyBoard.new(Round.ONE)
     const card = Cards.get(1)
-    const bot = new Bot(DifficultyLevel.EASY, 1, ActionPriority.BUILD, 3)
+    const bot = new BotStrategy(1, ActionPriority.BUILD, 3)
 
     board.putAdvisor(SlotAction.MUSTER_3, Advisor.FIVE, Player.PLAYER, 0)
     board.putAdvisor(SlotAction.MUSTER_2, Advisor.FOUR, Player.PLAYER, 0)
@@ -54,7 +54,7 @@ describe('BotStrategy', () => {
   it('placeNextAdvisor_level1_card15_fullColumn_left', () => {
     const board = StrategyBoard.new(Round.ONE)
     const card = Cards.get(15)
-    const bot = new Bot(DifficultyLevel.EASY, 1, ActionPriority.BUILD, 3)
+    const bot = new BotStrategy(1, ActionPriority.BUILD, 3)
 
     board.putAdvisor(SlotAction.SCHEME_3, Advisor.FIVE, Player.PLAYER, 0)
     board.putAdvisor(SlotAction.SCHEME_2, Advisor.FOUR, Player.PLAYER, 0)
@@ -67,7 +67,7 @@ describe('BotStrategy', () => {
   it('placeNextAdvisor_level1_card7_coins_noCoins', () => {
     const board = StrategyBoard.new(Round.ONE)
     const card = Cards.get(7)
-    const bot = new Bot(DifficultyLevel.EASY, 1, ActionPriority.BUILD, 0)
+    const bot = new BotStrategy(1, ActionPriority.BUILD, 0)
 
     board.putAdvisor(SlotAction.SCHEME_3, Advisor.ONE, Player.PLAYER, 0)
 

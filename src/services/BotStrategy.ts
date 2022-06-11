@@ -1,5 +1,4 @@
 import Card, { CardPriority, AdvisorAction } from "./Card";
-import DifficultyLevel from "./enum/DifficultyLevel";
 import Player from "./enum/Player";
 import StrategyBoard from "./StrategyBoard";
 import ActionPriority from "./enum/ActionPriority";
@@ -16,7 +15,7 @@ export default class BotStrategy {
   private _round : number
   private _coins : number
 
-  public constructor(difficultyLevel : DifficultyLevel, round : number, actionPriority : ActionPriority, coins : number) {
+  public constructor(round : number, actionPriority : ActionPriority, coins : number) {
     this._actionPriority = actionPriority
     this._round = round
     this._coins = coins
