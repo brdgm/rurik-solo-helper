@@ -15,6 +15,12 @@
   <p v-html="t('home.play2')"></p>
   <p v-html="t('home.play3')"></p>
 
+  <p class="text-muted fst-italic">
+    {{t('home.feedback')}}
+    <a href="https://boardgamegeek.com/thread/2871373/brdgmme-rurik-solo-helper-web-application" target="_blank" rel="noopener">Board Game Geek Thread</a> |
+    <a href="https://github.com/brdgm/rurik-solo-helper" target="_blank" rel="noopener">GitHub</a>
+  </p>
+
   <router-link to="/setup/gameDifficulty" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
 
   <p class="disclaimer">
