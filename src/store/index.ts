@@ -2,7 +2,7 @@ import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Expansion from '@/services/enum/Expansion'
-import toggleArrayItem from "@/util/toggleArrayItem"
+import toggleArrayItem from "brdgm-commons/src/util/array/toggleArrayItem"
 import Color from '@/services/enum/Color'
 import BotLeader from '@/services/enum/BotLeader'
 import CardDeck from '@/services/CardDeck'
@@ -177,7 +177,7 @@ export const store = createStore<State>({
   }
 })
 
-store.subscribe((mutation, state) => {
+store.subscribe((_mutation, state) => {
 	// store state asJSON string in local storage
 	localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(state));
 })

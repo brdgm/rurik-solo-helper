@@ -88,17 +88,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { StrategyRound, useStore } from '@/store'
+import { StrategyRound, StrategyBoardSlot, useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import Icon from '../structure/Icon.vue'
 import CoinCount from '../structure/CoinCount.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
 import SlotAction from '@/services/enum/SlotAction'
-import { StrategyBoardSlot } from "@/store";
 import Advisor from '@/services/enum/Advisor'
 import NavigationState from '@/util/NavigationState'
-import getErrorMessage from '@/util/getErrorMessage'
+import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
 import { Modal } from 'bootstrap'
 import BotStrategy from '@/services/BotStrategy'
 
@@ -198,7 +197,7 @@ export default defineComponent({
       this.$router.push('/round/' + this.round + '/strategy/' + (this.strategyRound + 1))
     },
     putBotAdvisor() {
-      const bot = new BotStrategy(this.difficultyLevel, this.round, this.actionPriority, this.botCoins)
+      const bot = new BotStrategy(this.round, this.actionPriority, this.botCoins)
       bot.placeNextAdvisor(this.strategyBoard, this.cardDeck.activeCard)
       this.botCoins = bot.coins
     },

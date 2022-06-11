@@ -46,11 +46,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { StrategyBoardSlot, useStore } from '@/store'
 import Icon from '../structure/Icon.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
-import { StrategyBoardSlot } from "@/store";
 import StrategyBoard from '@/services/StrategyBoard'
 
 export default defineComponent({

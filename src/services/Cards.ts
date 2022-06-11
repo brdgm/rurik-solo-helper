@@ -1,4 +1,4 @@
-import findMandatoryMap from "@/util/findMandatoryMap";
+import findMandatory from "brdgm-commons/src/util/map/findMandatory";
 import Card from "./Card";
 import Action from "./enum/Action";
 import Advisor from "./enum/Advisor";
@@ -776,7 +776,7 @@ export default {
    * @returns Card
    */
   get(id: number) : Card {
-    return findMandatoryMap(cardsMap, id)
+    return findMandatory(cardsMap, id)
   },
 
   /**

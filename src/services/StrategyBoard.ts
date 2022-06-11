@@ -5,8 +5,8 @@ import Player from "./enum/Player";
 import Round from "./enum/Round";
 import SlotAction from "./enum/SlotAction";
 import * as _ from "lodash"
-import findMandatory from "@/util/findMandatory";
-import TranslatableError from "@/util/TranslatableError";
+import findMandatory from "brdgm-commons/src/util/array/findMandatory";
+import TranslatableError from "brdgm-commons/src/util/error/TranslatableError";
 
 export default class StrategyBoard {
 
@@ -65,7 +65,7 @@ export default class StrategyBoard {
    * Puts an advisor to a slot on strategy board.
    */
   public putAdvisor(action : SlotAction, advisor : Advisor, player : Player, coins : number) : void {
-    const slots = this.findSlots(slot => slot.action == action)
+    const slots = this.findSlots(item => item.action == action)
     if (slots.length == 0) {
       throw new Error("Invalid slot action: " + action)
     }
@@ -101,7 +101,7 @@ export default class StrategyBoard {
    * Removes advisor from strategy board.
    */
   public removeAdvisor(advisor : Advisor, player : Player) : void {
-    const slots = this.findSlots(slot => slot.advisor == advisor && slot.player == player)
+    const slots = this.findSlots(item => item.advisor == advisor && item.player == player)
     if (slots.length != 1) {
       throw new Error("Found " + slots.length + " slots for advisor " + advisor + " (player=" + player + ")")
     }
