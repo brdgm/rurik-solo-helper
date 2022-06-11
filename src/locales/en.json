@@ -2,7 +2,7 @@
   "gameTitle": "Rurik: Dawn of Kiev",
   "home": {
     "title": "Rurik: Dawn of Kiev Solo Helper",
-    "play1": "Play the <b>Solo Mode</b> of <a href='https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev' target='_blank'><b>Rurik: Dawn of Kiev</b></a>.",
+    "play1": "Play the <b>Solo Mode</b> of <a href='https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev' target='_blank' rel='noopener'><b>Rurik: Dawn of Kiev</b></a>.",
     "play2": "To play the solo mode you only need the base game. This helper application replaces the solo card deck and the strategy board and manages the bonus actions and coins of the Rebellion.",
     "play3": "The expansion <b>Stone & Blade</b> is also supported. From the optional modules, you can use the 'Warfare' and 'Rebel Factions', but not the 'Epic Structures' or 'Intrigue Cards' modules.",
     "feedback": "Discussion and Feedback:"
