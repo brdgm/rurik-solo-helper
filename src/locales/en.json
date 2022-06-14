@@ -54,7 +54,7 @@
     "title": "Strategy Phase: Place Advisor",
     "advisorsBot": "Rebellion:",
     "advisorsPlayer": "You:",
-    "advisorsHint": "Use Drag & Drop to place your advisors.",
+    "advisorsHint": "Place your advisors.",
     "putAdvisorCoins": {
       "title": "Place Advisor",
       "text": "Do you want to add a bribe?",
