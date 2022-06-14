@@ -19,12 +19,12 @@
     </thead>
     <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="{ background1: rowIndex % 2 != 0, background2: rowIndex % 2 == 0 }">
       <td v-for="(slot, colIndex) in row" :key="colIndex">
-        <div class="slot" :class="{used: slot.advisor}"
-            @drop.prevent="dragDrop($event, slot.action)" @dragover.prevent @dragenter.prevent>
-          <Icon type="slot-action" :name="slot.action" class="action"/>
+        <div class="slot" :class="{used: slot.advisor, clickTarget: playerAdvisorSelected && playerAdvisorAllowedTarget(rowIndex, colIndex)}"
+            @drop.prevent="dragDrop($event, slot.action, rowIndex, colIndex)" @dragover.prevent @dragenter.prevent>
+          <Icon type="slot-action" :name="slot.action" class="action" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
           <template v-if="slot.advisor">
-            <Icon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor"/>
-            <CoinCount v-if="slot.coins" class="coinCount" :value="(slot.coins)"/>
+            <Icon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
+            <CoinCount v-if="slot.coins" class="coinCount" :value="(slot.coins)" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
           </template>
         </div>
       </td>
@@ -34,7 +34,8 @@
   <div class="advisors player" v-if="playerAdvisorReserve.length > 0">
     <h3 class="mt-3">{{t('strategy.advisorsPlayer')}}</h3>
     <Icon v-for="advisor in playerAdvisorReserve" :key="advisor" type="advisor" :name="advisor" :color="playerColor" class="advisor"
-        draggable @dragstart="dragStart($event,advisor)"/>
+        :class="{notSelected: playerAdvisorSelected && advisor!=playerAdvisor}"
+        draggable @dragstart="dragStart($event,advisor)" @click="playerAdvisorClick(advisor)"/>
     <div class="advisors-hint alert alert-light small" v-html="t('strategy.advisorsHint')"></div>
   </div>
 
@@ -125,9 +126,10 @@ export default defineComponent({
     return { t, difficultyLevel, round, cardDeck, actionPriority, strategyRound, botCoins, strategyBoard }
   },
   data() {
-    return {
+    return {      
       playerSlotAction: SlotAction.ATTACK_1,
       playerAdvisor: Advisor.ONE,
+      playerAdvisorSelected: false,
       playerCoins: 0,
       errorMessage: ''
     }
@@ -150,13 +152,38 @@ export default defineComponent({
     }
   },
   methods: {
-    getPlayerColor(slot : StrategyBoardSlot) {
+    getPlayerColor(slot : StrategyBoardSlot) : Color {
       if (slot.player == Player.PLAYER) {
         return this.playerColor
       }
       else {
         return this.botColor
       }
+    },
+    playerAdvisorClick(advisor : Advisor) : void {
+      if (this.playerAdvisorSelected && this.playerAdvisor == advisor) {
+        this.playerAdvisorSelected = false
+      }
+      else {
+        this.playerAdvisor = advisor
+        this.playerAdvisorSelected = true
+      }
+    },
+    playerAdvisorAllowedTarget(rowIndex : number, colIndex : number) : boolean {
+      var anyFreeSlot = false
+      for (var row = 0; row < this.rows.length; row++) {
+        if (row < rowIndex && !this.rows[row][colIndex].advisor) {
+          return false
+        }
+        anyFreeSlot = anyFreeSlot || !this.rows[row][colIndex].advisor
+      }
+      return anyFreeSlot
+    },
+    playerAdvisorClickSlot(action : SlotAction, rowIndex : number, colIndex : number) : void {
+      if (!this.playerAdvisorSelected || !this.playerAdvisorAllowedTarget(rowIndex, colIndex)) {
+        return;
+      }
+      this.putPlayerAdvisorAskForCoins(action, this.playerAdvisor);
     },
     dragStart(evt : DragEvent, advisor : Advisor) {
       if (!evt.dataTransfer) {
@@ -165,9 +192,11 @@ export default defineComponent({
       evt.dataTransfer.dropEffect = 'move'
       evt.dataTransfer.effectAllowed = 'move'
       evt.dataTransfer.setData('advisor', advisor)
+      this.playerAdvisor = advisor
+      this.playerAdvisorSelected = true
     },
-    dragDrop(evt : DragEvent, action : SlotAction) {
-      if (!evt.dataTransfer) {
+    dragDrop(evt : DragEvent, action : SlotAction, rowIndex : number, colIndex : number) : void {
+      if (!evt.dataTransfer || !this.playerAdvisorAllowedTarget(rowIndex, colIndex)) {
         return;
       }
 
@@ -178,6 +207,7 @@ export default defineComponent({
       this.playerSlotAction = action
       this.playerAdvisor = advisor
       this.playerCoins = 0
+      this.playerAdvisorSelected = false
       const modal = new Modal(document.getElementById('putAdvisorCoinsModal') as Element)
       modal.show()
     },
@@ -196,12 +226,12 @@ export default defineComponent({
       this.storeForNextStrategyRound()
       this.$router.push('/round/' + this.round + '/strategy/' + (this.strategyRound + 1))
     },
-    putBotAdvisor() {
+    putBotAdvisor() : void {
       const bot = new BotStrategy(this.round, this.actionPriority, this.botCoins)
       bot.placeNextAdvisor(this.strategyBoard, this.cardDeck.activeCard)
       this.botCoins = bot.coins
     },
-    storeForNextStrategyRound() {
+    storeForNextStrategyRound() : void {
       const strategyRound : StrategyRound = {
         round: this.round,
         strategyRound: this.strategyRound+1,
@@ -261,6 +291,16 @@ export default defineComponent({
     &.used .action {
       filter: brightness(50%);
     }
+    &.clickTarget {      
+      .action {
+        background: rgba(255,255,255,.4);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .advisor, .coinCount {
+        cursor: pointer;
+      }
+    }
     .advisor {
       position: absolute;
       left: 50%;
@@ -308,6 +348,9 @@ export default defineComponent({
 }
 .advisors.player .advisor {
   cursor: pointer;
+  &.notSelected {
+    filter: brightness(50%);
+  }
 }
 .advisors-hint {
   display: inline-block;
