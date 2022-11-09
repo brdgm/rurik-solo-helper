@@ -1,5 +1,5 @@
 <template>
-  <Icon type="actionPriority" :name="actionPriority" class="actionPriority"/>
+  <AppIcon type="actionPriority" :name="actionPriority" class="actionPriority"/>
   <p v-if="isAttackMovePriority" v-html="t('actionBot.move.text1AttackMove')"></p>
   <p v-else v-html="t('actionBot.move.text1Other')"></p>
   <ul class="small">
@@ -14,13 +14,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Icon from '@/components/structure/Icon.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import ActionPriority from '@/services/enum/ActionPriority'
 
 export default defineComponent({
   name: 'ActionMove',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()

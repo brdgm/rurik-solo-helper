@@ -35,7 +35,7 @@
     </div>
     
     <p v-if="priorityQuestionsAnswered">
-      {{t('claim.priority.nextPriority')}} <Icon type="actionPriority" :name="nextActionPriority" class="actionPriority"/>
+      {{t('claim.priority.nextPriority')}} <AppIcon type="actionPriority" :name="nextActionPriority" class="actionPriority"/>
     </p>
 
     <h3>{{t('claim.advanceTracks.title')}}</h3>
@@ -79,7 +79,7 @@ import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore, Claim, Round } from '@/store'
 import { useRoute } from 'vue-router'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 import ActionPriority from '@/services/enum/ActionPriority'
 import HouseholdMats from '@/services/HouseholdMats'
@@ -89,7 +89,7 @@ import BotLeader from '@/services/enum/BotLeader'
 export default defineComponent({
   name: 'ClaimPhaseRebellion',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -102,11 +102,11 @@ export default defineComponent({
     const bot = new BotAction(navigationState.difficultyLevel, navigationState.botCoins, navigationState.bonusActions)
 
     const claim = store.state.claim[round -1]
-    let priorityAttack = ref(claim?.priorityAttack)
-    let priorityBuild = ref(claim?.priorityBuild)
-    let priorityTax = ref(claim?.priorityTax)
-    let tracksAdvanced = ref(claim?.tracksAdvanced)
-    let boatRowsFilled = ref(claim?.boatRowsFilled)
+    const priorityAttack = ref(claim?.priorityAttack)
+    const priorityBuild = ref(claim?.priorityBuild)
+    const priorityTax = ref(claim?.priorityTax)
+    const tracksAdvanced = ref(claim?.tracksAdvanced)
+    const boatRowsFilled = ref(claim?.boatRowsFilled)
 
     return { t, round, bot, cardDeck,
         priorityAttack, priorityBuild, priorityTax, tracksAdvanced, boatRowsFilled }

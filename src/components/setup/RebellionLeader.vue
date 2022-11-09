@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-auto" v-for="leader in leaders" :key="leader">
-      <Icon type="leader-card" :name="leader" extension="jpg" class="troop" @click="updateBotLeader(leader)"/><br/>
+      <AppIcon type="leader-card" :name="leader" extension="jpg" class="troop" @click="updateBotLeader(leader)"/><br/>
       <input class="form-radio-input" type="radio" :id="'leader_'+leader" :value="leader" v-model="selectedLeader" @input="updateBotLeaderInput($event)">
       <label class="form-radio-label" :for="'leader_'+leader">{{t('leader.' + leader + '.name')}}</label>
     </div>
@@ -25,14 +25,14 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import BotLeader from '@/services/enum/BotLeader'
 import Expansion from '@/services/enum/Expansion'
 
 export default defineComponent({
   name: 'RebellionLeader',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -58,7 +58,7 @@ export default defineComponent({
       this.$store.commit('setupBotLeader', leader)
     },
     updateBotLeaderInput(event: Event) {
-      let leader = (event.target as HTMLInputElement).value as BotLeader
+      const leader = (event.target as HTMLInputElement).value as BotLeader
       this.$store.commit('setupBotLeader', leader)
     }
   }

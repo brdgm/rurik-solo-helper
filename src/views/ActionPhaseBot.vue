@@ -1,7 +1,7 @@
 <template>
   <StrategyBoardPreview :strategy-board="strategyBoard"/>
 
-  <Icon type="leader-mini" :name="botLeader" :color="botColor" class="mini"/>
+  <AppIcon type="leader-mini" :name="botLeader" :color="botColor" class="mini"/>
   <h1 class="clearfix">{{t('actionBot.title')}}</h1>
 
   <BotAction/>
@@ -14,7 +14,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
-import Icon from '@/components/structure/Icon.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import StrategyBoardPreview from '@/components/round/StrategyBoardPreview.vue'
 import BotAction from '@/components/round/BotAction.vue'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
@@ -23,7 +23,7 @@ import NavigationState from '@/util/NavigationState'
 export default defineComponent({
   name: 'ActionPhaseBot',
   components: {
-    Icon,
+    AppIcon,
     StrategyBoardPreview,
     BotAction,
     FooterButtons

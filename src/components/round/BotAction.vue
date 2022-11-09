@@ -14,12 +14,12 @@
       <div class="card-body">
         <h3>{{t('gameAction.' + action)}}</h3>
 
-        <Icon type="advisor" :name="slot.advisor" :color="botColor" class="advisor"/>
-        <Icon v-if="actionAllowed" type="slot-action" :name="slot.action" class="action"/>
-        <Icon v-else type="bonus-action" :name="oneCoinBonusAction" class="bonusAction mt-5"/>
+        <AppIcon type="advisor" :name="slot.advisor" :color="botColor" class="advisor"/>
+        <AppIcon v-if="actionAllowed" type="slot-action" :name="slot.action" class="action"/>
+        <AppIcon v-else type="bonus-action" :name="oneCoinBonusAction" class="bonusAction mt-5"/>
 
         <template v-for="(bonusAction, index) of bonusActions" :key="index">
-          <Icon type="bonus-action" :name="bonusAction.bonusAction" class="bonusAction"/>
+          <AppIcon type="bonus-action" :name="bonusAction.bonusAction" class="bonusAction"/>
         </template>
 
         <button class="btn btn-primary btn-lg mt-3" @click="actionPlayed(slot)">
@@ -50,7 +50,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore, StrategyBoardSlot, ActionRoundBot } from '@/store'
 import { useRoute } from 'vue-router'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import BotCoinPreview from './BotCoinPreview.vue'
 import ActionMuster from './instructions/ActionMuster.vue'
 import ActionMove from './instructions/ActionMove.vue'
@@ -72,7 +72,7 @@ import BonusAction from '@/services/enum/BonusAction'
 export default defineComponent({
   name: 'BotAction',
   components: {
-    Icon,
+    AppIcon,
     BotCoinPreview,
     ActionMuster,
     ActionMove,

@@ -1,7 +1,7 @@
 <template>
   <StrategyBoardPreview :strategy-board="strategyBoard"/>
 
-  <Icon type="troop" :color="playerColor" class="troop"/>
+  <AppIcon type="troop" :color="playerColor" class="troop"/>
   <h1 class="clearfix">{{t('actionPlayer.title')}}</h1>
 
   <PlayerAction/>
@@ -14,7 +14,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
-import Icon from '@/components/structure/Icon.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import StrategyBoardPreview from '@/components/round/StrategyBoardPreview.vue'
 import PlayerAction from '@/components/round/PlayerAction.vue'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
@@ -23,7 +23,7 @@ import NavigationState from '@/util/NavigationState'
 export default defineComponent({
   name: 'ActionPhasePlayer',
   components: {
-    Icon,
+    AppIcon,
     StrategyBoardPreview,
     PlayerAction,
     FooterButtons

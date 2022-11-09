@@ -25,9 +25,9 @@
             <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="{ background1: rowIndex % 2 != 0, background2: rowIndex % 2 == 0 }">
               <td v-for="(slot, colIndex) in row" :key="colIndex">
                 <div class="slot" :class="{used: slot.advisor}">
-                  <Icon type="slot-action" :name="slot.action" class="action"/>
+                  <AppIcon type="slot-action" :name="slot.action" class="action"/>
                   <template v-if="slot.advisor">
-                    <Icon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor"/>
+                    <AppIcon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor"/>
                   </template>
                 </div>
               </td>
@@ -47,7 +47,7 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { StrategyBoardSlot, useStore } from '@/store'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
 import StrategyBoard from '@/services/StrategyBoard'
@@ -55,7 +55,7 @@ import StrategyBoard from '@/services/StrategyBoard'
 export default defineComponent({
   name: 'StrategyBoardPreview',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
