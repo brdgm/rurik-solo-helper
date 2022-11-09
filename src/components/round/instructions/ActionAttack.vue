@@ -3,7 +3,7 @@
     <b>{{t('leader.ability')}}</b>: {{t('leader.' + botLeader + '.ability')}}
   </p>
 
-  <Icon type="actionPriority" :name="actionPriority" class="actionPriority"/>
+  <AppIcon type="actionPriority" :name="actionPriority" class="actionPriority"/>
   <p v-if="isAttackMovePriority" v-html="t('actionBot.attack.text1AttackMove')"></p>
   <p v-else v-html="t('actionBot.attack.text1Other')"></p>
   <ul class="small">
@@ -21,14 +21,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Icon from '@/components/structure/Icon.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import ActionPriority from '@/services/enum/ActionPriority'
 import BotLeader from '@/services/enum/BotLeader'
 
 export default defineComponent({
   name: 'ActionAttack',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()

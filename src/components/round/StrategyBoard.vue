@@ -2,7 +2,7 @@
   
   <div class="advisors">
     <h3>{{t('strategy.advisorsBot')}}</h3>
-    <Icon v-for="advisor in botAdvisorReserve" :key="advisor" type="advisor" :name="advisor" :color="botColor" class="advisor" />
+    <AppIcon v-for="advisor in botAdvisorReserve" :key="advisor" type="advisor" :name="advisor" :color="botColor" class="advisor" />
     <CoinCount class="coinCount" :value="botCoins"/>
   </div>
 
@@ -21,9 +21,9 @@
       <td v-for="(slot, colIndex) in row" :key="colIndex">
         <div class="slot" :class="{used: slot.advisor, clickTarget: playerAdvisorSelected && playerAdvisorAllowedTarget(rowIndex, colIndex)}"
             @drop.prevent="dragDrop($event, slot.action, rowIndex, colIndex)" @dragover.prevent @dragenter.prevent>
-          <Icon type="slot-action" :name="slot.action" class="action" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
+          <AppIcon type="slot-action" :name="slot.action" class="action" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
           <template v-if="slot.advisor">
-            <Icon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
+            <AppIcon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
             <CoinCount v-if="slot.coins" class="coinCount" :value="(slot.coins)" @click="playerAdvisorClickSlot(slot.action, rowIndex, colIndex)"/>
           </template>
         </div>
@@ -33,7 +33,7 @@
 
   <div class="advisors player" v-if="playerAdvisorReserve.length > 0">
     <h3 class="mt-3">{{t('strategy.advisorsPlayer')}}</h3>
-    <Icon v-for="advisor in playerAdvisorReserve" :key="advisor" type="advisor" :name="advisor" :color="playerColor" class="advisor"
+    <AppIcon v-for="advisor in playerAdvisorReserve" :key="advisor" type="advisor" :name="advisor" :color="playerColor" class="advisor"
         :class="{notSelected: playerAdvisorSelected && advisor!=playerAdvisor}"
         draggable @dragstart="dragStart($event,advisor)" @click="playerAdvisorClick(advisor)"/>
     <div class="advisors-hint alert alert-light small" v-html="t('strategy.advisorsHint')"></div>
@@ -54,7 +54,7 @@
                 <p><input type="number" min="0" max="20" v-model="playerCoins" @focus="inputSelectAll"/> {{t('strategy.putAdvisorCoins.coins')}}</p>
               </div>
               <div class="col-4">
-                <Icon type="slot-action" :name="playerSlotAction" class="action"/>
+                <AppIcon type="slot-action" :name="playerSlotAction" class="action"/>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { StrategyRound, StrategyBoardSlot, useStore } from '@/store'
 import { useRoute } from 'vue-router'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import CoinCount from '../structure/CoinCount.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
@@ -105,7 +105,7 @@ import BotStrategy from '@/services/BotStrategy'
 export default defineComponent({
   name: 'StrategyBoard',
   components: {
-    Icon,
+    AppIcon,
     CoinCount
   },
   setup() {
@@ -170,8 +170,8 @@ export default defineComponent({
       }
     },
     playerAdvisorAllowedTarget(rowIndex : number, colIndex : number) : boolean {
-      var anyFreeSlot = false
-      for (var row = 0; row < this.rows.length; row++) {
+      let anyFreeSlot = false
+      for (let row = 0; row < this.rows.length; row++) {
         if (row < rowIndex && !this.rows[row][colIndex].advisor) {
           return false
         }

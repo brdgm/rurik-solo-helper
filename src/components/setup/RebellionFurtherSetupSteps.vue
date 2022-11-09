@@ -1,6 +1,6 @@
 <template>
   <h3 class="mt-4">{{t('setup.rebellion.steps.title')}}</h3>
-  <Icon type="rebel" class="rebel" v-for="n in 16" :key="n"/>
+  <AppIcon type="rebel" class="rebel" v-for="n in 16" :key="n"/>
   <ol class="clearfix">
     <li v-html="t('setup.rebellion.steps.rebels')"></li>
     <li v-html="t('setup.rebellion.steps.mat')"></li>
@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import Expansion from '@/services/enum/Expansion'
 import CardDeck from '../../services/CardDeck'
 import { capitalize } from 'lodash'
@@ -24,7 +24,7 @@ import Region from '@/services/enum/Region'
 export default defineComponent({
   name: 'RebellionFurtherSetupSteps',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()

@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-auto" v-for="color in colors" :key="color">
-      <Icon type="troop" :color="color" class="troop" @click="updatePlayerColor(color)"/><br/>
+      <AppIcon type="troop" :color="color" class="troop" @click="updatePlayerColor(color)"/><br/>
       <input class="form-radio-input" type="radio" :id="'color_'+color" :value="color" v-model="selectedColor" @input="updatePlayerColorInput($event)">
       <label class="form-radio-label" :for="'color_'+color">{{t('color.' + color)}}</label>
     </div>
@@ -15,13 +15,13 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import Color from '@/services/enum/Color'
 
 export default defineComponent({
   name: 'PlayerColor',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -42,7 +42,7 @@ export default defineComponent({
       this.$store.commit('setupPlayerColor', color)
     },
     updatePlayerColorInput(event: Event) {
-      let color = (event.target as HTMLInputElement).value as Color
+      const color = (event.target as HTMLInputElement).value as Color
       this.$store.commit('setupPlayerColor', color)
     }
   }

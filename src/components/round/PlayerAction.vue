@@ -7,8 +7,8 @@
     <div class="card-body">
       <h3>{{t('gameAction.' + getAction(slot.action))}}</h3>
 
-      <Icon type="advisor" :name="slot.advisor" :color="playerColor" class="advisor"/>
-      <Icon type="slot-action" :name="slot.action" class="action"/>
+      <AppIcon type="advisor" :name="slot.advisor" :color="playerColor" class="advisor"/>
+      <AppIcon type="slot-action" :name="slot.action" class="action"/>
 
       <button class="btn btn-primary btn-lg mt-3" @click="actionPlayed(slot)">
         {{t('action.next')}}
@@ -27,7 +27,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore, StrategyBoardSlot, ActionRoundPlayer } from '@/store'
 import { useRoute } from 'vue-router'
-import Icon from '../structure/Icon.vue'
+import AppIcon from '../structure/AppIcon.vue'
 import BotCoinPreview from './BotCoinPreview.vue'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
@@ -40,7 +40,7 @@ import BotLeader from '@/services/enum/BotLeader'
 export default defineComponent({
   name: 'PlayerAction',
   components: {
-    Icon,
+    AppIcon,
     BotCoinPreview
   },
   setup() {

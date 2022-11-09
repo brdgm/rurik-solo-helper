@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="count">{{value}}</div>
-    <Icon type="coin" name="coin" class="coin" />
+    <AppIcon type="coin" name="coin" class="coin" />
   </div>
 </template>
 
@@ -9,12 +9,12 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/store'
-import Icon from './Icon.vue'
+import AppIcon from './AppIcon.vue'
 
 export default defineComponent({
   name: 'CoinCount',
   components: {
-    Icon
+    AppIcon
   },
   setup() {
     const { t } = useI18n()

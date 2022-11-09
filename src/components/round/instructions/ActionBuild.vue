@@ -15,13 +15,13 @@
   <p v-html="t('actionBot.build.pickStructureText')"></p>
   <ol type="A">
     <li v-if="isStoneBladeExpansion">
-      <Icon type="structure" :name="'stable-' + botColor" class="structure"/>
+      <AppIcon type="structure" :name="'stable-' + botColor" class="structure"/>
       <b>{{t('structure.stable')}}</b>
       <div class="small" v-html="t('actionBot.build.pickStructureNotes.stable')"></div>
       <button v-if="!moveInstructionsVisible" type="button" class="btn btn-light btn-sm" @click="showMoveInstructions">{{t('actionBot.showMoveInstructions')}}</button>
     </li>
     <li v-if="isStoneBladeExpansion">
-      <Icon type="structure" :name="'tavern-' + botColor" class="structure"/>
+      <AppIcon type="structure" :name="'tavern-' + botColor" class="structure"/>
       <b>{{t('structure.tavern')}}</b>
       <div class="small" v-html="t('actionBot.build.pickStructureNotes.tavern')"></div>
       <button type="button" class="btn btn-secondary btn-sm"  data-bs-toggle="modal" data-bs-target="#buildTavernUnlockBonusModal">{{t('actionBot.build.buildTavernUnlockBonus.title')}}</button>
@@ -29,7 +29,7 @@
     <li v-html="t('actionBot.build.pickStructureTextChoose')"></li>
     <ol>
       <li v-for="structure of buildOrder" :key="structure">
-        <Icon type="structure" :name="structure + '-' + botColor" class="structure"/>
+        <AppIcon type="structure" :name="structure + '-' + botColor" class="structure"/>
         <b>{{t('structure.' + structure)}}</b>
         <div v-if="isChurch(structure)" class="small" v-html="t('actionBot.build.pickStructureNotes.church')"></div>
       </li>
@@ -69,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import Icon from '@/components/structure/Icon.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import ActionMuster from './ActionMuster.vue'
 import ActionMove from './ActionMove.vue'
 import ActionAttack from './ActionAttack.vue'
@@ -83,7 +83,7 @@ import BotLeader from '@/services/enum/BotLeader'
 export default defineComponent({
   name: 'ActionBuild',
   components: {
-    Icon,
+    AppIcon,
     ActionMuster,
     ActionMove,
     ActionAttack
