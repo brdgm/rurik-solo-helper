@@ -1,8 +1,8 @@
 <template>
   <h3 class="mt-4">{{t('setup.rebellion.steps.title')}}</h3>
-  <AppIcon type="rebel" class="rebel" v-for="n in 16" :key="n"/>
+  <AppIcon type="rebel" class="rebel" v-for="n in rebelMiniatureCount" :key="n"/>
   <ol class="clearfix">
-    <li v-html="t('setup.rebellion.steps.rebels')"></li>
+    <li v-html="t('setup.rebellion.steps.rebels',{rebelMiniatureCount:rebelMiniatureCount})"></li>
     <li v-html="t('setup.rebellion.steps.mat')"></li>
     <li v-if="hasStoneBlade" v-html="t('setup.rebellion.steps.boonTokens')"></li>
     <li v-html="t('setup.rebellion.steps.leaderRegion', {region:leaderStartRegion})"></li>
@@ -47,6 +47,9 @@ export default defineComponent({
     },
     rebelStartRegion2() : string {
       return capitalize(this.startingRegions[1])
+    },
+    rebelMiniatureCount() : number {
+      return this.hasStoneBlade ? 16 : 15
     }
   }
 })

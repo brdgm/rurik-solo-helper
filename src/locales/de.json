@@ -30,7 +30,7 @@
       },
       "steps": {
         "title": "Weitere Schritte",
-        "rebels": "Verwende <b>16 aufständische Figuren</b> für die Aufständischen (anstelle der Truppen-Figuren).",
+        "rebels": "Verwende <b>{rebelMiniatureCount} aufständische Figuren</b> für die Aufständischen (anstelle der Truppen-Figuren).",
         "mat": "Nehme ein <b>Haushaltstableau</b> für die Rebellion. Es wird nur die Boot-Seite verwendet, die Applikation verwaltet die Boni und die Münzen der Rebellion.",
         "boonTokens": "Lege 3 <b>Handelsvorteilsmarker</b> unter die 3 zentralen Bootsspalten auf dem Haushaltstableau (<i>Holz, Fisch, Honig</i>).",
         "leaderRegion": "Stelle den Anführer der Aufständischen und zwei aufständische Figuren nach <b>{region}</b>.",

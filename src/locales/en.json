@@ -30,7 +30,7 @@
       },
       "steps": {
         "title": "Further Setup Steps",
-        "rebels": "Give the Rebellion <b>16 rebel miniatures</b> (instead of the troop miniatures).",
+        "rebels": "Give the Rebellion <b>{rebelMiniatureCount} rebel miniatures</b> (instead of the troop miniatures).",
         "mat": "Take a <b>household mat</b> for the rebellion. You only need the boat side, the application will manage the bonus spaces and track the money of the Rebellion.",
         "boonTokens": "Place three <b>trade boon tokens</b> below the three central boat columns on the household mat (<i>wood, fish, honey</i>).",
         "leaderRegion": "Place the Rebellion’s leader and two rebels in <b>{region}</b>.",
