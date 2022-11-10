@@ -66,15 +66,15 @@ export default class StrategyBoard {
    */
   public putAdvisor(action : SlotAction, advisor : Advisor, player : Player, coins : number) : void {
     // find column for slot action
-    const column = findMandatory(this._columns, item => item.slots.find(slot => slot.action==action) != undefined)
+    const column = findMandatory(this._columns, c => c.slots.find(s => s.action==action) != undefined)
     // validate: player may put another advisor in same column, if placed already any in three diffferent columns
     if (player == Player.PLAYER && this.playerHasAdvisorInColumn(column) && !this.playerHasAdvisorThreeDifferentColumns()) {
       throw new TranslatableError('You have to place advisor in three different columns before you can place another one here.',
           'strategy.error.playerThreeDifferentColumns')
     }
     // find first empty slot, or slot where this advisor with his coins is stronger
-    const slot = column.slots.find(item => !item.advisor || 
-        StrategyBoard.getAdvisorStrength(item.advisor, item.coins) < StrategyBoard.getAdvisorStrength(advisor, coins))
+    const slot = column.slots.find(s => !s.advisor || 
+        StrategyBoard.getAdvisorStrength(s.advisor, s.coins) < StrategyBoard.getAdvisorStrength(advisor, coins))
     if (!slot) {
       throw new Error(`No avaiable slot in column: ${column.action} for advisor ${advisor} with ${coins} coins.`)
     }
