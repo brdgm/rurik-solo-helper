@@ -65,12 +65,16 @@ export default class StrategyBoard {
    * Puts an advisor to a slot on strategy board.
    */
   public putAdvisor(action : SlotAction, advisor : Advisor, player : Player, coins : number) : void {
-    const slots = this.findSlots(item => item.action == action)
-    if (slots.length == 0) {
-      throw new Error("Invalid slot action: " + action)
+    // find column for slot action
+    const column = findMandatory(this._columns, column => column.slots.find(slot => slot.action==action) != undefined)
+    // find first empty slot, or slot where this advisor with his coins is stronger
+    const slot = column.slots.find(slot => !slot.advisor || 
+      StrategyBoard.getAdvisorStrength(slot.advisor, slot.coins) < StrategyBoard.getAdvisorStrength(advisor, coins))
+    if (!slot) {
+      throw new Error(`No avaiable slot in column: ${column.action} for advisor ${advisor} with ${coins} coins.`)
     }
-    const slot = slots[0]
     if (slot.advisor != undefined) {
+      // if slot is occupied, move other advisors down
       this.moveDownAdvisor(slot.action, advisor, coins)
     }
     slot.advisor = advisor
@@ -135,8 +139,8 @@ export default class StrategyBoard {
           if (row == lastRow) {
             throw new TranslatableError("Advisor for slot action " + action + " is already on last row.", "strategy.error.columnFull")
           }
-          const newStrength = StrategyBoard.getAdvisorStrength(newAdvisor) + newCoins
-          const existingStrength = StrategyBoard.getAdvisorStrength(slot.advisor) + slot.coins
+          const newStrength = StrategyBoard.getAdvisorStrength(newAdvisor,  newCoins)
+          const existingStrength = StrategyBoard.getAdvisorStrength(slot.advisor, slot.coins)
           if (newStrength <= existingStrength) {
             const requiredCoins = existingStrength + 1 - StrategyBoard.getAdvisorStrength(newAdvisor)
             throw new TranslatableError("Strength of advisor " + newAdvisor + "+" + newCoins
@@ -252,10 +256,10 @@ export default class StrategyBoard {
   /**
    * Get strength of advisor (from 1..5).
    */
-  public static getAdvisorStrength(advisor : Advisor) : number {
+  public static getAdvisorStrength(advisor : Advisor, coins? : number) : number {
     for (let i=0; i<StrategyBoard.ADVISOR_LOOKUP_ORDER.length;i++) {
       if (StrategyBoard.ADVISOR_LOOKUP_ORDER[i].includes(advisor)) {
-        return i + 1;
+        return i + 1 + (coins ?? 0);
       }
     }
     throw new Error("Invalid advisor: " + advisor)
