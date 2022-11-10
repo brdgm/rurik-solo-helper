@@ -65,7 +65,8 @@
     },
     "error": {
       "columnFull": "This strategy board column is full.",
-      "notEnoughCoins": "Advisor strength is not sufficient - add a bribe with at least {requiredCoins} coin. | Advisor strength is not sufficient - add a bribe with at least {requiredCoins} coins."
+      "notEnoughCoins": "Advisor strength is not sufficient - add a bribe with at least {requiredCoins} coin. | Advisor strength is not sufficient - add a bribe with at least {requiredCoins} coins.",
+      "playerThreeDifferentColumns": "You have to place advisors in three different columns before you can place another one here."
     },
     "boardPreview": "Strategy Board"
   },

@@ -115,6 +115,31 @@ describe('StrategyBoard', () => {
     expect(board.getPlacedAdvisorCount(Player.PLAYER)).to.eq(0)
     expect(board.getPlacedAdvisorCount(Player.BOT)).to.eq(0)
   })
+
+  it('advisorsRound1_HigherAdvisorMovesOthersDownInColumn', () => {
+    const board = StrategyBoard.new(Round.ONE)
+  
+    board.putAdvisor(SlotAction.MUSTER_3, Advisor.TWO, Player.BOT, 0)
+    board.putAdvisor(SlotAction.MUSTER_2, Advisor.FIVE, Player.PLAYER, 0)
+  
+    assertSlot(board.getColumn(Action.MUSTER).slots[0], Advisor.FIVE, Player.PLAYER)
+    assertSlot(board.getColumn(Action.MUSTER).slots[1], Advisor.TWO, Player.BOT)
+  })
+  
+  it('advisorsRound2_HigherAdvisorMovesOthersDownInColumn', () => {
+    const board = StrategyBoard.new(Round.TWO)
+  
+    board.putAdvisor(SlotAction.MUSTER_3, Advisor.ONE, Player.PLAYER, 0)
+    board.putAdvisor(SlotAction.TAX_2, Advisor.TWO, Player.PLAYER, 0)
+  
+    board.putAdvisor(SlotAction.ATTACK_2, Advisor.FOUR, Player.PLAYER, 0)
+    board.putAdvisor(SlotAction.ATTACK_1, Advisor.TWO, Player.BOT, 3)
+    board.putAdvisor(SlotAction.ATTACK_1_COIN, Advisor.FIVE, Player.PLAYER, 1)
+  
+    assertSlot(board.getColumn(Action.ATTACK).slots[0], Advisor.FIVE, Player.PLAYER, 1)
+    assertSlot(board.getColumn(Action.ATTACK).slots[1], Advisor.TWO, Player.BOT, 3)
+    assertSlot(board.getColumn(Action.ATTACK).slots[2], Advisor.FOUR, Player.PLAYER)
+  }) 
 })
 
 function assertColumn(column : StrategyBoardColumn, action : Action, actions : SlotAction[]) : void {
@@ -142,4 +167,10 @@ function assertDoubleAction(slots : StrategyBoardSlot[], advisor1 : Advisor, act
   const slot2 = slots[1]
   expect(slot2.advisor).to.eq(advisor2)
   expect(slot2.action).to.eq(action2)
+}
+
+function assertSlot(slot : StrategyBoardSlot, advisor? : Advisor, player? : Player, coins? : number) {
+  expect(slot.advisor).to.eq(advisor, `advisor slot ${slot.action}`)
+  expect(slot.player).to.eq(player, `player slot ${slot.action}`)
+  expect(slot.coins).to.eq(coins ?? 0, `coins slot ${slot.action}`)
 }

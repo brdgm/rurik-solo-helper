@@ -65,12 +65,21 @@ export default class StrategyBoard {
    * Puts an advisor to a slot on strategy board.
    */
   public putAdvisor(action : SlotAction, advisor : Advisor, player : Player, coins : number) : void {
-    const slots = this.findSlots(item => item.action == action)
-    if (slots.length == 0) {
-      throw new Error("Invalid slot action: " + action)
+    // find column for slot action
+    const column = findMandatory(this._columns, c => c.slots.find(s => s.action==action) != undefined)
+    // validate: player may put another advisor in same column, if placed already any in three diffferent columns
+    if (player == Player.PLAYER && this.playerHasAdvisorInColumn(column) && !this.playerHasAdvisorThreeDifferentColumns()) {
+      throw new TranslatableError('You have to place advisor in three different columns before you can place another one here.',
+          'strategy.error.playerThreeDifferentColumns')
     }
-    const slot = slots[0]
+    // find first empty slot, or slot where this advisor with his coins is stronger
+    const slot = column.slots.find(s => !s.advisor || 
+        StrategyBoard.getAdvisorStrength(s.advisor, s.coins) < StrategyBoard.getAdvisorStrength(advisor, coins))
+    if (!slot) {
+      throw new Error(`No avaiable slot in column: ${column.action} for advisor ${advisor} with ${coins} coins.`)
+    }
     if (slot.advisor != undefined) {
+      // if slot is occupied, move other advisors down
       this.moveDownAdvisor(slot.action, advisor, coins)
     }
     slot.advisor = advisor
@@ -82,6 +91,16 @@ export default class StrategyBoard {
     else {
       _.remove(this._botAdvisorReserve, item => item == advisor)
     }
+  }
+
+  private playerHasAdvisorInColumn(column : StrategyBoardColumn) {
+    return column.slots.find(slot => slot.player == Player.PLAYER)
+  }
+
+  private playerHasAdvisorThreeDifferentColumns() {
+    return this._columns
+        .filter(column => this.playerHasAdvisorInColumn(column))
+        .length >= 3
   }
 
   /**
@@ -103,7 +122,7 @@ export default class StrategyBoard {
   public removeAdvisor(advisor : Advisor, player : Player) : void {
     const slots = this.findSlots(item => item.advisor == advisor && item.player == player)
     if (slots.length != 1) {
-      throw new Error("Found " + slots.length + " slots for advisor " + advisor + " (player=" + player + ")")
+      throw new Error(`Found ${slots.length} slots for advisor ${advisor}  (player=${player})`)
     }
     const slot = slots[0]
     slot.advisor = undefined
@@ -130,18 +149,18 @@ export default class StrategyBoard {
         const slot = column.slots[row]
         if (slot.action == action) {
           if (slot.advisor == undefined || slot.coins == undefined) {
-            throw new Error("No advisor to move down for slot action " + action)
+            throw new Error(`No advisor to move down for slot action ${action}`)
           }
           if (row == lastRow) {
-            throw new TranslatableError("Advisor for slot action " + action + " is already on last row.", "strategy.error.columnFull")
+            throw new TranslatableError(`Advisor for slot action ${action} is already on last row.`, 'strategy.error.columnFull')
           }
-          const newStrength = StrategyBoard.getAdvisorStrength(newAdvisor) + newCoins
-          const existingStrength = StrategyBoard.getAdvisorStrength(slot.advisor) + slot.coins
+          const newStrength = StrategyBoard.getAdvisorStrength(newAdvisor,  newCoins)
+          const existingStrength = StrategyBoard.getAdvisorStrength(slot.advisor, slot.coins)
           if (newStrength <= existingStrength) {
             const requiredCoins = existingStrength + 1 - StrategyBoard.getAdvisorStrength(newAdvisor)
-            throw new TranslatableError("Strength of advisor " + newAdvisor + "+" + newCoins
-                + " is not greater than " + slot.advisor + "+" + slot.coins + ".",
-                "strategy.error.notEnoughCoins", { "requiredCoins": requiredCoins }, requiredCoins)
+            throw new TranslatableError(`Strength of advisor ${newAdvisor}+${newCoins} `
+                + ` is not greater than ${slot.advisor}+${slot.coins}.`,
+                'strategy.error.notEnoughCoins', { 'requiredCoins': requiredCoins }, requiredCoins)
           }
           const nextSlot = column.slots[row+1]
           if (nextSlot.advisor != undefined && nextSlot.coins != undefined) {
@@ -252,10 +271,10 @@ export default class StrategyBoard {
   /**
    * Get strength of advisor (from 1..5).
    */
-  public static getAdvisorStrength(advisor : Advisor) : number {
+  public static getAdvisorStrength(advisor : Advisor, coins? : number) : number {
     for (let i=0; i<StrategyBoard.ADVISOR_LOOKUP_ORDER.length;i++) {
       if (StrategyBoard.ADVISOR_LOOKUP_ORDER[i].includes(advisor)) {
-        return i + 1;
+        return i + 1 + (coins ?? 0);
       }
     }
     throw new Error("Invalid advisor: " + advisor)
