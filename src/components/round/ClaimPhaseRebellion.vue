@@ -159,14 +159,14 @@ export default defineComponent({
       }
 
       // unlock bonus actions
-      for (let i=0; i<(this.tracksAdvanced as number); i++) {
+      for (let i=0; i<this.tracksAdvanced; i++) {
         this.bot.unlockNextBonusAction()
       }
 
       // store claim
       const claim : Claim = {
         round: this.round,
-        priorityAttack: this.priorityAttack as boolean,
+        priorityAttack: this.priorityAttack,
         priorityBuild: this.priorityBuild,
         priorityTax: this.priorityTax,
         tracksAdvanced: this.tracksAdvanced,
