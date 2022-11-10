@@ -42,6 +42,9 @@ describe('BotStrategy', () => {
     const card = Cards.get(1)
     const bot = new BotStrategy(1, ActionPriority.BUILD, 3)
 
+    board.putAdvisor(SlotAction.TAX_2, Advisor.ONE, Player.PLAYER, 0)
+    board.putAdvisor(SlotAction.ATTACK_2, Advisor.TWO, Player.PLAYER, 0)
+
     board.putAdvisor(SlotAction.MUSTER_3, Advisor.FIVE, Player.PLAYER, 0)
     board.putAdvisor(SlotAction.MUSTER_2, Advisor.FOUR, Player.PLAYER, 0)
     board.putAdvisor(SlotAction.MUSTER_1_COIN, Advisor.TWO, Player.PLAYER, 0)
@@ -51,9 +54,12 @@ describe('BotStrategy', () => {
   })
 
   it('placeNextAdvisor_level1_card15_fullColumn_left', () => {
-    const board = StrategyBoard.new(Round.ONE)
+    const board = StrategyBoard.new(Round.FOUR)
     const card = Cards.get(15)
     const bot = new BotStrategy(1, ActionPriority.BUILD, 3)
+
+    board.putAdvisor(SlotAction.TAX_2, Advisor.ONE, Player.PLAYER, 0)
+    board.putAdvisor(SlotAction.ATTACK_2, Advisor.TWO_PLUS, Player.PLAYER, 0)
 
     board.putAdvisor(SlotAction.SCHEME_3, Advisor.FIVE, Player.PLAYER, 0)
     board.putAdvisor(SlotAction.SCHEME_2, Advisor.FOUR, Player.PLAYER, 0)

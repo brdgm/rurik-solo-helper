@@ -65,7 +65,8 @@
     },
     "error": {
       "columnFull": "Diese Spalte des Strategietableau ist voll.",
-      "notEnoughCoins": "Der Ratgeber ist nicht stark genug - lege ein Bestechungsgeld von mindestens {requiredCoins} Münze bei. | Der Ratgeber ist nicht stark genug - lege ein Bestechungsgeld von mindestens {requiredCoins} Münzen bei."
+      "notEnoughCoins": "Der Ratgeber ist nicht stark genug - lege ein Bestechungsgeld von mindestens {requiredCoins} Münze bei. | Der Ratgeber ist nicht stark genug - lege ein Bestechungsgeld von mindestens {requiredCoins} Münzen bei.",
+      "playerThreeDifferentColumns": "Du musst Ratgeber in drei verschiedene Spalten einsetzen, bevor du hier einen weiteren einsetzen kannst."
     },
     "boardPreview": "Strategietableau"
   },
