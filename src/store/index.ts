@@ -165,7 +165,7 @@ export const store = createStore<State>({
     claim(state : State, claim: Claim) {
       state.claim[claim.round - 1] = claim
     },
-    endGame(state : State) {
+    resetGame(state : State) {
       state.setup.cardDeck = CardDeck.new().toPersistence()
       state.setup.botCoins = 3
       state.rounds = []
