@@ -21,7 +21,9 @@
     <a href="https://github.com/brdgm/rurik-solo-helper" target="_blank" rel="noopener">GitHub</a>
   </p>
 
-  <router-link to="/setup/gameDifficulty" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
+  <button class="btn btn-primary btn-lg mt-3" @click="setupGame">
+    {{t('action.playGame')}}
+  </button>
 
   <p class="disclaimer">
     This is not an official PieceKeeper product and has no affiliation with <a href="https://www.piecekeepergames.com/" target="_blank" rel="noopener">PieceKeeper Games</a>.
@@ -41,6 +43,12 @@ export default defineComponent({
     const { t } = useI18n()
     return { t }
   },
+  methods: {
+    setupGame() : void {
+      this.$store.commit('resetGame')
+      this.$router.push('/setup/gameDifficulty')
+    }
+  }
 })
 </script>
 

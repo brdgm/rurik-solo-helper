@@ -51,21 +51,16 @@
     <ActionAttack :action-priority="actionPriority" :botLeader="botLeader" :is-stone-blade-expansion="isStoneBladeExpansion"/>
   </template>
 
-  <div id="buildTavernUnlockBonusModal" class="modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{t('actionBot.build.buildTavernUnlockBonus.title')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" v-html="t('actionBot.build.buildTavernUnlockBonus.text')"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="$emit('unlockBonusAction')">{{t('actionBot.build.buildTavernUnlockBonus.title')}}</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ModalDialog id="buildTavernUnlockBonusModal" :title="t('actionBot.build.buildTavernUnlockBonus.title')">
+    <template #body>
+      <p v-html="t('actionBot.build.buildTavernUnlockBonus.text')"></p>
+    </template>
+    <template #footer>
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="$emit('unlockBonusAction')">{{t('actionBot.build.buildTavernUnlockBonus.title')}}</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
+    </template>
+  </ModalDialog>
+
 </template>
 
 <script lang="ts">
@@ -73,6 +68,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import ActionMuster from './ActionMuster.vue'
 import ActionMove from './ActionMove.vue'
 import ActionAttack from './ActionAttack.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import CardDeck from '@/services/CardDeck'
 import Structure from '@/services/enum/Structure'
 import findMandatory from 'brdgm-commons/src/util/array/findMandatory'
@@ -86,7 +82,8 @@ export default defineComponent({
     AppIcon,
     ActionMuster,
     ActionMove,
-    ActionAttack
+    ActionAttack,
+    ModalDialog
   },
   emits: ['unlockBonusAction'],
   setup() {

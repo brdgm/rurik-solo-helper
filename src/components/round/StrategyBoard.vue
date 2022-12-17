@@ -39,50 +39,31 @@
     <div class="advisors-hint alert alert-light small" v-html="t('strategy.advisorsHint')"></div>
   </div>
 
-  <div class="modal" id="putAdvisorCoinsModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><span v-html="t('strategy.putAdvisorCoins.title')"></span></h5>
-          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="row">
-              <div class="col-8">
-                <p>{{t('strategy.putAdvisorCoins.text')}}</p>
-                <p><input type="number" min="0" max="20" v-model="playerCoins" @focus="inputSelectAll"/> {{t('strategy.putAdvisorCoins.coins')}}</p>
-              </div>
-              <div class="col-4">
-                <AppIcon type="slot-action" :name="playerSlotAction" class="action"/>
-              </div>
-            </div>
+  <ModalDialog id="putAdvisorCoinsModal" :title="t('strategy.putAdvisorCoins.title')">
+    <template #body>
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <p>{{t('strategy.putAdvisorCoins.text')}}</p>
+            <p><input type="number" min="0" max="20" v-model="playerCoins" @focus="inputSelectAll"/> {{t('strategy.putAdvisorCoins.coins')}}</p>
+          </div>
+          <div class="col-4">
+            <AppIcon type="slot-action" :name="playerSlotAction" class="action"/>
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-dismiss="modal" @click="putPlayerAdvisor">{{t('strategy.putAdvisorCoins.title')}}</button>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
-        </div>
       </div>
-    </div>
-  </div>
+    </template>
+    <template #footer>
+      <button class="btn btn-primary" data-bs-dismiss="modal" @click="putPlayerAdvisor">{{t('strategy.putAdvisorCoins.title')}}</button>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
+    </template>
+  </ModalDialog>
 
-  <div class="modal" id="putAdvisorNotPossible" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><span v-html="t('strategy.putAdvisorNotPossible.title')"></span></h5>
-          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ModalDialog id="putAdvisorNotPossible" :title="t('strategy.putAdvisorNotPossible.title')">
+    <template #body>
+      <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+    </template>
+  </ModalDialog>
 
 </template>
 
@@ -93,6 +74,7 @@ import { StrategyRound, StrategyBoardSlot, useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import AppIcon from '../structure/AppIcon.vue'
 import CoinCount from '../structure/CoinCount.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
 import SlotAction from '@/services/enum/SlotAction'
@@ -106,7 +88,8 @@ export default defineComponent({
   name: 'StrategyBoard',
   components: {
     AppIcon,
-    CoinCount
+    CoinCount,
+    ModalDialog
   },
   setup() {
     const { t } = useI18n()
