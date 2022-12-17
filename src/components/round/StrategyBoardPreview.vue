@@ -3,43 +3,32 @@
     {{t('strategy.boardPreview')}}
   </button>
 
-  <div id="strategyBoardPreviewModal" class="modal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{t('strategy.boardPreview')}}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <table class="board">
-            <thead>
-              <tr class="background1">
-                <th>{{t('gameAction.muster')}}</th>
-                <th>{{t('gameAction.move')}}</th>
-                <th>{{t('gameAction.attack')}}</th>
-                <th>{{t('gameAction.tax')}}</th>
-                <th>{{t('gameAction.build')}}</th>
-                <th>{{t('gameAction.scheme')}}</th>
-              </tr>
-            </thead>
-            <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="{ background1: rowIndex % 2 != 0, background2: rowIndex % 2 == 0 }">
-              <td v-for="(slot, colIndex) in row" :key="colIndex">
-                <div class="slot" :class="{used: slot.advisor}">
-                  <AppIcon type="slot-action" :name="slot.action" class="action"/>
-                  <template v-if="slot.advisor">
-                    <AppIcon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor"/>
-                  </template>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.close')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ModalDialog id="strategyBoardPreviewModal" :title="t('strategy.boardPreview')" :size-lg="true">
+    <template #body>
+      <table class="board">
+        <thead>
+          <tr class="background1">
+            <th>{{t('gameAction.muster')}}</th>
+            <th>{{t('gameAction.move')}}</th>
+            <th>{{t('gameAction.attack')}}</th>
+            <th>{{t('gameAction.tax')}}</th>
+            <th>{{t('gameAction.build')}}</th>
+            <th>{{t('gameAction.scheme')}}</th>
+          </tr>
+        </thead>
+        <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="{ background1: rowIndex % 2 != 0, background2: rowIndex % 2 == 0 }">
+          <td v-for="(slot, colIndex) in row" :key="colIndex">
+            <div class="slot" :class="{used: slot.advisor}">
+              <AppIcon type="slot-action" :name="slot.action" class="action"/>
+              <template v-if="slot.advisor">
+                <AppIcon type="advisor" :name="slot.advisor" :color="getPlayerColor(slot)" class="advisor"/>
+              </template>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </template>
+  </ModalDialog>
 
 </template>
 
@@ -48,6 +37,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { StrategyBoardSlot, useStore } from '@/store'
 import AppIcon from '../structure/AppIcon.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
 import StrategyBoard from '@/services/StrategyBoard'
@@ -55,7 +45,8 @@ import StrategyBoard from '@/services/StrategyBoard'
 export default defineComponent({
   name: 'StrategyBoardPreview',
   components: {
-    AppIcon
+    AppIcon,
+    ModalDialog
   },
   setup() {
     const { t } = useI18n()
