@@ -1,12 +1,12 @@
-import CardDeck from "@/services/CardDeck"
-import ActionPriority from "@/services/enum/ActionPriority"
-import DifficultyLevel from "@/services/enum/DifficultyLevel"
-import { HouseholdMatPriority } from "@/services/HouseholdMat"
-import HouseholdMats from "@/services/HouseholdMats"
-import StrategyBoard from "@/services/StrategyBoard"
-import { Round, State, StrategyRound } from "@/store"
-import { RouteLocation } from "vue-router"
-import { Store } from "vuex"
+import CardDeck from '@/services/CardDeck'
+import ActionPriority from '@/services/enum/ActionPriority'
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
+import { HouseholdMatPriority } from '@/services/HouseholdMat'
+import HouseholdMats from '@/services/HouseholdMats'
+import StrategyBoard from '@/services/StrategyBoard'
+import { Round, State, StrategyRound } from '@/store'
+import { RouteLocation } from 'vue-router'
+import { Store } from 'vuex'
 
 export default class NavigationState {
 

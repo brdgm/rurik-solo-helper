@@ -9,7 +9,7 @@ import ActionPhasePlayer from '@/views/ActionPhasePlayer.vue'
 import ActionPhaseBot from '@/views/ActionPhaseBot.vue'
 import ClaimPhase from '@/views/ClaimPhase.vue'
 import EndOfGame from '@/views/EndOfGame.vue'
-import createRouter from "brdgm-commons/src/util/router/createRouter"
+import createRouter from 'brdgm-commons/src/util/router/createRouter'
 
 const LOCALSTORAGE_KEY = process.env.VUE_APP_LOCALSTORAGE_KEY_PREFIX + "route"
 

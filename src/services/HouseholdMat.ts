@@ -1,7 +1,7 @@
-import Action from "./enum/Action"
-import DifficultyLevel from "./enum/DifficultyLevel"
-import BonusAction from "./enum/BonusAction"
-import ActionPriority from "./enum/ActionPriority"
+import Action from './enum/Action'
+import DifficultyLevel from './enum/DifficultyLevel'
+import BonusAction from './enum/BonusAction'
+import ActionPriority from './enum/ActionPriority'
 
 export default interface HouseholdMat {
   difficultyLevel: DifficultyLevel

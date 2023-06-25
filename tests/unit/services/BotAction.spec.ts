@@ -2,7 +2,7 @@ import BotAction from '@/services/BotAction'
 import { HouseholdMatBonusAction } from '@/services/HouseholdMat'
 import Action from '@/services/enum/Action'
 import BonusAction from '@/services/enum/BonusAction'
-import SlotAction from "@/services/enum/SlotAction"
+import SlotAction from '@/services/enum/SlotAction'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import { expect } from 'chai'
 import HouseholdMats from '@/services/HouseholdMats'

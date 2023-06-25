@@ -1,7 +1,7 @@
-import { CardDeckPersistence } from "@/store"
-import * as _ from "lodash"
-import Card from "./Card"
-import Cards from "./Cards"
+import { CardDeckPersistence } from '@/store'
+import * as _ from 'lodash'
+import Card from './Card'
+import Cards from './Cards'
 
 export default class CardDeck {
 
