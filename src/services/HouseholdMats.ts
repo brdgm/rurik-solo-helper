@@ -1,9 +1,9 @@
-import findMandatory from "brdgm-commons/src/util/map/findMandatory"
-import Action from "./enum/Action"
-import DifficultyLevel from "./enum/DifficultyLevel"
-import BonusAction from "./enum/BonusAction"
-import ActionPriority from "./enum/ActionPriority"
-import HouseholdMat from "./HouseholdMat"
+import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import Action from './enum/Action'
+import DifficultyLevel from './enum/DifficultyLevel'
+import BonusAction from './enum/BonusAction'
+import ActionPriority from './enum/ActionPriority'
+import HouseholdMat from './HouseholdMat'
 
 const householdMats = [
   {

@@ -1,13 +1,13 @@
-import DifficultyLevel from "./enum/DifficultyLevel"
-import HouseholdMat, { HouseholdMatBonusAction, HouseholdMatPriority } from "./HouseholdMat"
-import HouseholdMats from "./HouseholdMats"
-import * as _ from "lodash"
-import ActionPriority from "./enum/ActionPriority"
-import Action from "./enum/Action"
-import findMandatory from "brdgm-commons/src/util/array/findMandatory"
-import BonusAction from "./enum/BonusAction"
-import SlotAction from "./enum/SlotAction"
-import SlotActionMappings from "./SlotActionMappings"
+import DifficultyLevel from './enum/DifficultyLevel'
+import HouseholdMat, { HouseholdMatBonusAction, HouseholdMatPriority } from './HouseholdMat'
+import HouseholdMats from './HouseholdMats'
+import * as _ from 'lodash'
+import ActionPriority from './enum/ActionPriority'
+import Action from './enum/Action'
+import findMandatory from 'brdgm-commons/src/util/array/findMandatory'
+import BonusAction from './enum/BonusAction'
+import SlotAction from './enum/SlotAction'
+import SlotActionMappings from './SlotActionMappings'
 
 /**
  * Bot implementation for execution actions.

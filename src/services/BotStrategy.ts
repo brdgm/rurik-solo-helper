@@ -1,10 +1,10 @@
-import Card, { CardPriority, AdvisorAction } from "./Card";
-import Player from "./enum/Player";
-import StrategyBoard from "./StrategyBoard";
-import ActionPriority from "./enum/ActionPriority";
-import { StrategyBoardColumn, StrategyBoardSlot } from "@/store";
-import Advisor from "./enum/Advisor";
-import Action from "./enum/Action";
+import Card, { CardPriority, AdvisorAction } from './Card';
+import Player from './enum/Player';
+import StrategyBoard from './StrategyBoard';
+import ActionPriority from './enum/ActionPriority';
+import { StrategyBoardColumn, StrategyBoardSlot } from '@/store';
+import Advisor from './enum/Advisor';
+import Action from './enum/Action';
 
 /**
  * Bot implementation for picking slots on strategy board.
