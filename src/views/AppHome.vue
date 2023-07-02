@@ -29,7 +29,7 @@
     This is not an official PieceKeeper product and has no affiliation with <a href="https://www.piecekeepergames.com/" target="_blank" rel="noopener">PieceKeeper Games</a>.
     All art in this app is from <a href="https://www.piecekeepergames.com/games/rurik/" target="_blank" rel="noopener">Rurik: Dawn of Kiev</a>.
     See <a href="#" data-bs-toggle="modal" data-bs-target="#creditsModal">{{t('footer.credits')}}</a>.
-    <a href="https://ko-fi.com/brdgm_me" target="_blank"><img class="kofi-button" src="@/assets/kofi_button_dark.png"/></a>
+    <a href="https://ko-fi.com/brdgm_me" target="_blank" rel="noopener"><img class="kofi-button" src="@/assets/kofi_button_dark.png"/></a>
   </p>
 
 </template>
