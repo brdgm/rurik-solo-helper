@@ -6,10 +6,6 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'AppIcon',
-  setup() {
-    const images = require.context('@/assets/icons', true, /\.(png|jpg)$/)
-    return { images }
-  },
   props: {
     type: {
       type: String,
@@ -26,7 +22,7 @@ export default defineComponent({
     extension: {
       type: String,
       required: false,
-      default: "png"
+      default: 'png'
     },
     draggable: {
       type: Boolean,
@@ -36,17 +32,13 @@ export default defineComponent({
   },
   computed: {
     imageUrl() : string {
-      let path = "./"
+      const colorSuffix = this.color ? `-${this.color}` : ''
       if (this.type) {
-        path += this.type + "/" + (this.name ?? this.type)
+        return new URL(`/src/assets/icons/${this.type}/${this.name ?? this.type}${colorSuffix}.${this.extension}`, import.meta.url).toString()
       }
       else {
-        path += this.name
+        return new URL(`/src/assets/icons/${this.name}${colorSuffix}.${this.extension}`, import.meta.url).toString()
       }
-      if (this.color) {
-        path += "-" + this.color
-      }
-      return this.images(path + "." + this.extension)
     }
   }
 })
