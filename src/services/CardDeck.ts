@@ -1,5 +1,5 @@
 import { CardDeckPersistence } from '@/store'
-import * as _ from 'lodash'
+import { shuffle } from 'lodash'
 import Card from './Card'
 import Cards from './Cards'
 
@@ -43,7 +43,7 @@ export default class CardDeck {
    * Shuffles pile.
    */
   public shuffle() : void {
-    this._pile = _.shuffle(this._pile)
+    this._pile = shuffle(this._pile)
   }
 
   /**
