@@ -2,7 +2,7 @@
 
   <div class="float-end m-2 w-25">
     <a href="https://boardgamegeek.com/boardgame/228328/rurik-dawn-kiev" target="_blank" rel="noopener">
-      <img src="../assets/game-rurik.jpg" class="rounded shadow w-100"/>
+      <img src="../assets/game-rurik.jpg" class="rounded shadow w-100" alt=""/>
     </a>
     <p class="mt-3">
       Tabletopia: <a href="https://tabletopia.com/games/rurik" target="_blank" rel="noopener">Rurik</a> | <a href="https://tabletopia.com/games/rurik-stone-and-blade" target="_blank" rel="noopener">Stone & Blade</a>
@@ -29,7 +29,7 @@
     This is not an official PieceKeeper product and has no affiliation with <a href="https://www.piecekeepergames.com/" target="_blank" rel="noopener">PieceKeeper Games</a>.
     All art in this app is from <a href="https://www.piecekeepergames.com/games/rurik/" target="_blank" rel="noopener">Rurik: Dawn of Kiev</a>.
     See <a href="#" data-bs-toggle="modal" data-bs-target="#creditsModal">{{t('footer.credits')}}</a>.
-    <a href="https://ko-fi.com/brdgm_me" target="_blank" rel="noopener"><img class="kofi-button" src="@/assets/kofi_button_dark.png"/></a>
+    <a href="https://ko-fi.com/brdgm_me" target="_blank" rel="noopener"><img class="kofi-button" src="@/assets/kofi_button_dark.png" alt="Support me on Ko-fi"/></a>
   </p>
 
 </template>

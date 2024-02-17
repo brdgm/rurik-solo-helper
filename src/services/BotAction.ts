@@ -1,7 +1,7 @@
 import DifficultyLevel from './enum/DifficultyLevel'
 import HouseholdMat, { HouseholdMatBonusAction, HouseholdMatPriority } from './HouseholdMat'
 import HouseholdMats from './HouseholdMats'
-import * as _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import ActionPriority from './enum/ActionPriority'
 import Action from './enum/Action'
 import findMandatory from 'brdgm-commons/src/util/array/findMandatory'
@@ -22,7 +22,7 @@ export default class BotAction {
   public constructor(difficultyLevel : DifficultyLevel, coins : number, bonusActions : HouseholdMatPriority[]) {
     this._householdMat = HouseholdMats.get(difficultyLevel)
     this._actionPriority = this._householdMat.startingPriority
-    this._bonusActions = _.cloneDeep(bonusActions)
+    this._bonusActions = cloneDeep(bonusActions)
     this._coins = coins
   }
 

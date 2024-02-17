@@ -4,7 +4,7 @@ import Advisor from './enum/Advisor';
 import Player from './enum/Player';
 import Round from './enum/Round';
 import SlotAction from './enum/SlotAction';
-import * as _ from 'lodash'
+import { remove, cloneDeep } from 'lodash'
 import findMandatory from 'brdgm-commons/src/util/array/findMandatory';
 import TranslatableError from 'brdgm-commons/src/util/error/TranslatableError';
 
@@ -86,10 +86,10 @@ export default class StrategyBoard {
     slot.player = player
     slot.coins = coins
     if (player == Player.PLAYER) {
-      _.remove(this._playerAdvisorReserve, item => item == advisor)
+      remove(this._playerAdvisorReserve, item => item == advisor)
     }
     else {
-      _.remove(this._botAdvisorReserve, item => item == advisor)
+      remove(this._botAdvisorReserve, item => item == advisor)
     }
   }
 
@@ -262,9 +262,9 @@ export default class StrategyBoard {
    */
   public static fromPersistence(persistence : StrategyBoardPersistence) : StrategyBoard {
     // deep copy of data structures
-    const columns = _.cloneDeep(persistence.columns)
-    const playerAdvisorReserve = _.cloneDeep(persistence.playerAdvisorReserve)
-    const botAdvisorReserve = _.cloneDeep(persistence.botAdvisorReserve)
+    const columns = cloneDeep(persistence.columns)
+    const playerAdvisorReserve = cloneDeep(persistence.playerAdvisorReserve)
+    const botAdvisorReserve = cloneDeep(persistence.botAdvisorReserve)
     return new StrategyBoard(columns, playerAdvisorReserve, botAdvisorReserve)
   }
 
