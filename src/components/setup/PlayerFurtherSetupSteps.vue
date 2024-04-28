@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { capitalize } from 'lodash'
 import Region from '@/services/enum/Region'
 import Expansion from '@/services/enum/Expansion'
@@ -24,15 +24,15 @@ export default defineComponent({
   name: 'PlayerFurtherSetupSteps',
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   computed: {
     hasStoneBlade() : boolean {
-      return this.$store.state.setup.expansions.includes(Expansion.STONE_BLADE);
+      return this.state.setup.expansions.includes(Expansion.STONE_BLADE);
     },
     startingRegions() : Region[] {
-      const cardDeck = CardDeck.fromPersistence(this.$store.state.setup.cardDeck)
+      const cardDeck = CardDeck.fromPersistence(this.state.setup.cardDeck)
       return cardDeck.activeCard.locationOrder.filter(region => region != Region.KIEV)
     },
     leaderStartRegion() : string {
@@ -48,9 +48,9 @@ export default defineComponent({
   methods: {
     startGame() : void {
       // prepare first round persistence
-      const cardDeck = CardDeck.fromPersistence(this.$store.state.setup.cardDeck)
+      const cardDeck = CardDeck.fromPersistence(this.state.setup.cardDeck)
       cardDeck.draw()
-      const houseMat = HouseholdMats.get(this.$store.state.setup.difficultyLevel)
+      const houseMat = HouseholdMats.get(this.state.setup.difficultyLevel)
       const roundPersistence = {
         round: 1,
         cardDeck: cardDeck.toPersistence(),
@@ -59,7 +59,7 @@ export default defineComponent({
         actionRoundPlayer: [],
         actionRoundBot: []
       }
-      this.$store.commit('round', roundPersistence)
+      this.state.round(roundPersistence)
 
       // go to first strategy round
       this.$router.push('/round/1/strategy/0')

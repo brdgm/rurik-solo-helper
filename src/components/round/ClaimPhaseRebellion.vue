@@ -77,7 +77,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore, Claim, Round } from '@/store'
+import { useStateStore, Claim, Round } from '@/store/state'
 import { useRoute } from 'vue-router'
 import AppIcon from '../structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
@@ -93,22 +93,22 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store)    
+    const navigationState = new NavigationState(route, state)    
     const round = navigationState.round
     const cardDeck = navigationState.cardDeck
     const bot = new BotAction(navigationState.difficultyLevel, navigationState.botCoins, navigationState.bonusActions)
 
-    const claim = store.state.claim[round -1]
+    const claim = state.claim[round -1]
     const priorityAttack = ref(claim?.priorityAttack)
     const priorityBuild = ref(claim?.priorityBuild)
     const priorityTax = ref(claim?.priorityTax)
     const tracksAdvanced = ref(claim?.tracksAdvanced)
     const boatRowsFilled = ref(claim?.boatRowsFilled)
 
-    return { t, round, bot, cardDeck,
+    return { t, state, round, bot, cardDeck,
         priorityAttack, priorityBuild, priorityTax, tracksAdvanced, boatRowsFilled }
   },
   computed: {
@@ -133,7 +133,7 @@ export default defineComponent({
         return ActionPriority.TAX
       }
       else {
-        const householdMat = HouseholdMats.get(this.$store.state.setup.difficultyLevel)
+        const householdMat = HouseholdMats.get(this.state.setup.difficultyLevel)
         return householdMat.startingPriority
       }
     },
@@ -144,7 +144,7 @@ export default defineComponent({
       return this.boatRowsFilled != undefined
     },
     botLeader() : BotLeader {
-      return this.$store.state.setup.botLeader
+      return this.state.setup.botLeader
     },
     leaderAbilityVisible() : boolean {
       return this.botLeader == BotLeader.SVIATOPOLK || this.botLeader == BotLeader.GLEB || this.botLeader == BotLeader.MARIA
@@ -174,7 +174,7 @@ export default defineComponent({
         botCoins: this.bot.coins + this.boatRowsFilled,
         bonusActions: this.bot.bonusActions
       }
-      this.$store.commit('claim', claim)
+      this.state.storeClaim(claim)
 
       // prepare next round with new priority
       this.cardDeck.draw()
@@ -186,7 +186,7 @@ export default defineComponent({
         actionRoundPlayer: [],
         actionRoundBot: []
       }
-      this.$store.commit('round', round)
+      this.state.round(round)
 
       // move to next
       this.$router.push('/round/' + (this.round + 1) + '/strategy/0')

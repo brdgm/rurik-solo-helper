@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import StrategyBoard from '@/components/round/StrategyBoard.vue'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
@@ -27,14 +27,12 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store)
+    const navigationState = new NavigationState(route, state)
     
-    const round = navigationState.round
-    const strategyRound = navigationState.strategyRound
-    const strategyBoard = navigationState.strategyBoard
+    const { round, strategyRound, strategyBoard } = navigationState
 
     return { t, round, strategyRound, strategyBoard }
   },

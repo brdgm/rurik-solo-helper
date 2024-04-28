@@ -70,7 +70,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { StrategyRound, StrategyBoardSlot, useStore } from '@/store'
+import { StrategyRound, StrategyBoardSlot, useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import AppIcon from '../structure/AppIcon.vue'
 import CoinCount from '../structure/CoinCount.vue'
@@ -93,10 +93,10 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store)
+    const navigationState = new NavigationState(route, state)
     
     const difficultyLevel = navigationState.difficultyLevel
     const round = navigationState.round
@@ -106,7 +106,7 @@ export default defineComponent({
     const botCoins = navigationState.botCoins
     const strategyBoard = navigationState.strategyBoard
 
-    return { t, difficultyLevel, round, cardDeck, actionPriority, strategyRound, botCoins, strategyBoard }
+    return { t, state, difficultyLevel, round, cardDeck, actionPriority, strategyRound, botCoins, strategyBoard }
   },
   data() {
     return {      
@@ -119,10 +119,10 @@ export default defineComponent({
   },
   computed: {
     playerColor() : Color {
-      return this.$store.state.setup.playerColor
+      return this.state.setup.playerColor
     },
     botColor() : Color {
-      return this.$store.state.setup.botColor
+      return this.state.setup.botColor
     },
     rows() : StrategyBoardSlot[][] {
       return this.strategyBoard.getRows()
@@ -164,13 +164,13 @@ export default defineComponent({
     },
     playerAdvisorClickSlot(action : SlotAction, rowIndex : number, colIndex : number) : void {
       if (!this.playerAdvisorSelected || !this.playerAdvisorAllowedTarget(rowIndex, colIndex)) {
-        return;
+        return
       }
       this.putPlayerAdvisorAskForCoins(action, this.playerAdvisor);
     },
     dragStart(evt : DragEvent, advisor : Advisor) {
       if (!evt.dataTransfer) {
-        return;
+        return
       }
       evt.dataTransfer.dropEffect = 'move'
       evt.dataTransfer.effectAllowed = 'move'
@@ -180,7 +180,7 @@ export default defineComponent({
     },
     dragDrop(evt : DragEvent, action : SlotAction, rowIndex : number, colIndex : number) : void {
       if (!evt.dataTransfer || !this.playerAdvisorAllowedTarget(rowIndex, colIndex)) {
-        return;
+        return
       }
 
       const advisor = evt.dataTransfer.getData('advisor') as Advisor
@@ -221,7 +221,7 @@ export default defineComponent({
         botCoins: this.botCoins,
         strategyBoard: this.strategyBoard.toPersistence()
       }
-      this.$store.commit('strategyRound', strategyRound)
+      this.state.strategyRound(strategyRound)
     },
     inputSelectAll(event: Event) : void {
       const input = event.target as HTMLInputElement

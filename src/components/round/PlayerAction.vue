@@ -25,7 +25,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore, StrategyBoardSlot, ActionRoundPlayer } from '@/store'
+import { useStateStore, StrategyBoardSlot, ActionRoundPlayer } from '@/store/state'
 import { useRoute } from 'vue-router'
 import AppIcon from '../structure/AppIcon.vue'
 import BotCoinPreview from './BotCoinPreview.vue'
@@ -45,11 +45,11 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const playerColor = store.state.setup.playerColor
-    const navigationState = new NavigationState(route, store)
+    const playerColor = state.setup.playerColor
+    const navigationState = new NavigationState(route, state)
     
     const round = navigationState.round
     const actionRound = navigationState.actionRound
@@ -58,7 +58,7 @@ export default defineComponent({
 
     const nextActionSlots = strategyBoard.findNextAdvisorActions(Player.PLAYER)
 
-    return { t, playerColor, round, actionRound, strategyBoard, botCoins, nextActionSlots }
+    return { t, state, playerColor, round, actionRound, strategyBoard, botCoins, nextActionSlots }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -70,7 +70,7 @@ export default defineComponent({
           .find(action => action == Action.ATTACK) != undefined
     },
     botLeader() : BotLeader {
-      return this.$store.state.setup.botLeader
+      return this.state.setup.botLeader
     },
     showLeaderAbility() : boolean {
       return this.isAttack && this.botLeader == BotLeader.GLEB
@@ -89,7 +89,7 @@ export default defineComponent({
         botCoins : this.botCoins,
         strategyBoard : this.strategyBoard.toPersistence()
       }
-      this.$store.commit('actionRoundPlayer', actionRoundPlayer)
+      this.state.actionRoundPlayer(actionRoundPlayer)
 
       this.$router.push(this.nextButtonRouteTo)
     },

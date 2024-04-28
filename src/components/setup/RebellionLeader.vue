@@ -24,7 +24,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
 import BotLeader from '@/services/enum/BotLeader'
 import Expansion from '@/services/enum/Expansion'
@@ -36,13 +36,13 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   computed: {
     leaders() : BotLeader[] {
       const leaders = [ BotLeader.SVIATOPOLK ]
-      if (this.$store.state.setup.expansions.includes(Expansion.STONE_BLADE)) {
+      if (this.state.setup.expansions.includes(Expansion.STONE_BLADE)) {
         leaders.push(BotLeader.MARIA)
         leaders.push(BotLeader.GLEB)
         leaders.push(BotLeader.THEOFANA)
@@ -50,16 +50,16 @@ export default defineComponent({
       return leaders
     },
     selectedLeader() : BotLeader {
-      return this.$store.state.setup.botLeader
+      return this.state.setup.botLeader
     }
   },
   methods: {
     updateBotLeader(leader: BotLeader) {
-      this.$store.commit('setupBotLeader', leader)
+      this.state.setupBotLeader(leader)
     },
     updateBotLeaderInput(event: Event) {
       const leader = (event.target as HTMLInputElement).value as BotLeader
-      this.$store.commit('setupBotLeader', leader)
+      this.state.setupBotLeader(leader)
     }
   }
 })

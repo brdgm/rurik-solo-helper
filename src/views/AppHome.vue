@@ -35,6 +35,7 @@
 </template>
 
 <script lang="ts">
+import { useStateStore } from '@/store/state'
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -42,11 +43,12 @@ export default defineComponent({
   name: 'AppHome',
   setup() {
     const { t } = useI18n()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   methods: {
     setupGame() : void {
-      this.$store.commit('resetGame')
+      this.state.resetGame()
       this.$router.push('/setup/gameDifficulty')
     }
   }
