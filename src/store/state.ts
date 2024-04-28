@@ -32,7 +32,7 @@ export const useStateStore = defineStore(`${name}.store`, {
     } as State
   },
   actions: {
-    setupToggleExpansionStoneBlade(state : State) {
+    setupToggleExpansionStoneBlade() {
       toggleArrayItem(this.setup.expansions, Expansion.STONE_BLADE)
       if (this.setup.expansions.length == 0) {
         this.setup.botLeader = BotLeader.SVIATOPOLK
