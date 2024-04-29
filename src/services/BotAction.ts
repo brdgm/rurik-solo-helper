@@ -100,10 +100,10 @@ export default class BotAction {
       switch (bonusAction.bonusAction) {
         case BonusAction.COIN_1:
           this._coins += 1
-          break;
+          break
         case BonusAction.COIN_2:
           this._coins += 2
-          break;
+          break
         default:
           // no automatic action
       }
@@ -118,9 +118,9 @@ export default class BotAction {
       case SlotAction.ATTACK_1_COIN:
       case SlotAction.TAX_1_COIN:
       case SlotAction.BUILD_1_COIN:
-        return true;
+        return true
       default:
-        return false;
+        return false
     }
   }
 

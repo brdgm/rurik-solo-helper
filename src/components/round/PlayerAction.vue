@@ -95,7 +95,7 @@ export default defineComponent({
     },
     stealCoin() : void {
       if (this.botCoins <= 0) {
-        return;
+        return
       }
       this.botCoins--
       this.$forceUpdate()

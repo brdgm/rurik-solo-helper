@@ -155,7 +155,7 @@ export default defineComponent({
       // skip all steps in last round
       if (this.lastRound) {
         this.$router.push('/round/' + this.round + '/end')
-        return;
+        return
       }
 
       // unlock bonus actions

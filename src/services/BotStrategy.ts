@@ -38,7 +38,7 @@ export default class BotStrategy {
     for (const action of actionOrder) {
       const column = board.getColumn(action)
       if (this.placeAdvisorInColumn(board, column, advisorAction.advisor, advisorAction.coin ?? false)) {
-        break;
+        break
       }
     }
   }

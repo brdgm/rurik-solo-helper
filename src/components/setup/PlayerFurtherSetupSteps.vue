@@ -29,7 +29,7 @@ export default defineComponent({
   },
   computed: {
     hasStoneBlade() : boolean {
-      return this.state.setup.expansions.includes(Expansion.STONE_BLADE);
+      return this.state.setup.expansions.includes(Expansion.STONE_BLADE)
     },
     startingRegions() : Region[] {
       const cardDeck = CardDeck.fromPersistence(this.state.setup.cardDeck)

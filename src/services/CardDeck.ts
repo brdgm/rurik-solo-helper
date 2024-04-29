@@ -16,7 +16,7 @@ export default class CardDeck {
   }
 
   public get activeCard() : Card {
-    return this._pile[0];
+    return this._pile[0]
   }
 
   /**

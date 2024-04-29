@@ -166,7 +166,7 @@ export default defineComponent({
       if (!this.playerAdvisorSelected || !this.playerAdvisorAllowedTarget(rowIndex, colIndex)) {
         return
       }
-      this.putPlayerAdvisorAskForCoins(action, this.playerAdvisor);
+      this.putPlayerAdvisorAskForCoins(action, this.playerAdvisor)
     },
     dragStart(evt : DragEvent, advisor : Advisor) {
       if (!evt.dataTransfer) {
