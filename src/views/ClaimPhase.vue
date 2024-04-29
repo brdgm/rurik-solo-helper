@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import ClaimPhaseRebellion from '@/components/round/ClaimPhaseRebellion.vue'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
@@ -23,18 +23,18 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store)    
+    const navigationState = new NavigationState(route, state)    
     const round = navigationState.round
 
-    return { t, round }
+    return { t, state, round }
   },
   computed: {
     backButtonRouteTo() : string {
       try {
-        const lastActionRound = this.$store.state.rounds[this.round - 1].actionRoundBot.length - 1
+        const lastActionRound = this.state.rounds[this.round - 1].actionRoundBot.length - 1
         return '/round/' + this.round + '/action/bot/' + lastActionRound
       }
       catch {

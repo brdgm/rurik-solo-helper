@@ -1,7 +1,7 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory';
-import SlotActionMapping from './SlotActionMapping';
-import Action from './enum/Action';
-import SlotAction from './enum/SlotAction';
+import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import SlotActionMapping from './SlotActionMapping'
+import Action from './enum/Action'
+import SlotAction from './enum/SlotAction'
 
 const mappings = [
   {

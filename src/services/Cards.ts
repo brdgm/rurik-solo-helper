@@ -1,10 +1,10 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory';
-import Card from './Card';
-import Action from './enum/Action';
-import Advisor from './enum/Advisor';
-import ActionPriority from './enum/ActionPriority';
-import Region from './enum/Region';
-import Structure from './enum/Structure';
+import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import Card from './Card'
+import Action from './enum/Action'
+import Advisor from './enum/Advisor'
+import ActionPriority from './enum/ActionPriority'
+import Region from './enum/Region'
+import Structure from './enum/Structure'
 
 const cards = [
   {

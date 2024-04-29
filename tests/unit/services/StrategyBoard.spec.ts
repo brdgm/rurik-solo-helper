@@ -4,7 +4,7 @@ import Player from '@/services/enum/Player'
 import Round from '@/services/enum/Round'
 import SlotAction from '@/services/enum/SlotAction'
 import StrategyBoard from '@/services/StrategyBoard'
-import { StrategyBoardColumn, StrategyBoardSlot } from '@/store'
+import { StrategyBoardColumn, StrategyBoardSlot } from '@/store/state'
 import { expect } from 'chai'
 
 describe('StrategyBoard', () => {

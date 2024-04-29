@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import StrategyBoardPreview from '@/components/round/StrategyBoardPreview.vue'
@@ -30,16 +30,14 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const botLeader = store.state.setup.botLeader
-    const botColor = store.state.setup.botColor
-    const navigationState = new NavigationState(route, store)
+    const botLeader = state.setup.botLeader
+    const botColor = state.setup.botColor
+    const navigationState = new NavigationState(route, state)
     
-    const round = navigationState.round
-    const actionRound = navigationState.actionRound
-    const strategyBoard = navigationState.strategyBoard
+    const { round, actionRound, strategyBoard } = navigationState
 
     return { t, botLeader, botColor, round, actionRound, strategyBoard }
   },

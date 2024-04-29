@@ -48,7 +48,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore, StrategyBoardSlot, ActionRoundBot } from '@/store'
+import { useStateStore, StrategyBoardSlot, ActionRoundBot } from '@/store/state'
 import { useRoute } from 'vue-router'
 import AppIcon from '../structure/AppIcon.vue'
 import BotCoinPreview from './BotCoinPreview.vue'
@@ -83,11 +83,11 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const botColor = store.state.setup.botColor
-    const navigationState = new NavigationState(route, store)
+    const botColor = state.setup.botColor
+    const navigationState = new NavigationState(route, state)
     
     const round = navigationState.round
     const actionPriority = navigationState.actionPriority
@@ -102,7 +102,7 @@ export default defineComponent({
     const bonusActions = bot.getBonusActions(action)
     const actionAllowed = bot.executeAutomaticActions(slot.action, bonusActions)
 
-    return { t, botColor, round, actionPriority, cardDeck, actionRound, strategyBoard, slot, action, actionAllowed, bot, bonusActions }
+    return { t, state, botColor, round, actionPriority, cardDeck, actionRound, strategyBoard, slot, action, actionAllowed, bot, bonusActions }
   },
   computed: {
     nextButtonRouteTo() : string {
@@ -117,7 +117,7 @@ export default defineComponent({
       return this.cardDeck.activeCard.locationOrder.map(location => capitalize(location as string))
     },
     isStoneBladeExpansion() : boolean {
-      return this.$store.state.setup.expansions.includes(Expansion.STONE_BLADE)
+      return this.state.setup.expansions.includes(Expansion.STONE_BLADE)
     },
     isMuster() : boolean {
       return this.action == Action.MUSTER
@@ -138,7 +138,7 @@ export default defineComponent({
       return this.action == Action.SCHEME
     },
     botLeader() : BotLeader {
-      return this.$store.state.setup.botLeader
+      return this.state.setup.botLeader
     },
     hasMoveBonusAction() : boolean {
       if (this.action == Action.MOVE) {
@@ -162,7 +162,7 @@ export default defineComponent({
         strategyBoard : this.strategyBoard.toPersistence(),
         bonusActions : this.bot.bonusActions
       }
-      this.$store.commit('actionRoundBot', actionRoundBot)
+      this.state.actionRoundBot(actionRoundBot)
 
       this.$router.push(this.nextButtonRouteTo)
     },

@@ -19,7 +19,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import NavigationState from '@/util/NavigationState'
@@ -32,15 +32,15 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const navigationState = new NavigationState(route, store)
+    const navigationState = new NavigationState(route, state)
     const botCoins = navigationState.botCoins
     
     const round = navigationState.round
 
-    return { t, round, botCoins }
+    return { t, state, round, botCoins }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -50,7 +50,7 @@ export default defineComponent({
       return Math.ceil(this.botCoins / 3)
     },
     isStoneBladeExpansion() : boolean {
-      return this.$store.state.setup.expansions.includes(Expansion.STONE_BLADE)
+      return this.state.setup.expansions.includes(Expansion.STONE_BLADE)
     }
   }
 })

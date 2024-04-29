@@ -1,12 +1,12 @@
-import { StrategyBoardColumn, StrategyBoardPersistence, StrategyBoardSlot } from '@/store';
-import Action from './enum/Action';
-import Advisor from './enum/Advisor';
-import Player from './enum/Player';
-import Round from './enum/Round';
-import SlotAction from './enum/SlotAction';
+import { StrategyBoardColumn, StrategyBoardPersistence, StrategyBoardSlot } from '@/store/state'
+import Action from './enum/Action'
+import Advisor from './enum/Advisor'
+import Player from './enum/Player'
+import Round from './enum/Round'
+import SlotAction from './enum/SlotAction'
 import { remove, cloneDeep } from 'lodash'
-import findMandatory from 'brdgm-commons/src/util/array/findMandatory';
-import TranslatableError from 'brdgm-commons/src/util/error/TranslatableError';
+import findMandatory from 'brdgm-commons/src/util/array/findMandatory'
+import TranslatableError from 'brdgm-commons/src/util/error/TranslatableError'
 
 export default class StrategyBoard {
 
