@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Expansion from '@/services/enum/Expansion'
-import toggleArrayItem from 'brdgm-commons/src/util/array/toggleArrayItem'
+import toggleArrayItem from '@brdgm/brdgm-commons/src/util/array/toggleArrayItem'
 import Color from '@/services/enum/Color'
 import BotLeader from '@/services/enum/BotLeader'
 import CardDeck from '@/services/CardDeck'

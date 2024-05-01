@@ -1,4 +1,4 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import findMandatory from '@brdgm/brdgm-commons/src/util/map/findMandatory'
 import Action from './enum/Action'
 import DifficultyLevel from './enum/DifficultyLevel'
 import BonusAction from './enum/BonusAction'
