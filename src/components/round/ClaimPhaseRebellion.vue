@@ -204,6 +204,10 @@ export default defineComponent({
   margin-left: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: #eee;
+  white-space: nowrap;
   input[type=radio] {
     cursor: pointer;
   }
@@ -211,10 +215,6 @@ export default defineComponent({
     padding-left: 0.5rem;
     cursor: pointer;
   }
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  background-color: #eee;
-  white-space: nowrap;
 }
 .actionPriority {
   height: 3rem;
