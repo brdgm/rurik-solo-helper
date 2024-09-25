@@ -35,9 +35,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { StrategyBoardSlot, useStore } from '@/store'
+import { StrategyBoardSlot, useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import Color from '@/services/enum/Color'
 import Player from '@/services/enum/Player'
 import StrategyBoard from '@/services/StrategyBoard'
@@ -50,8 +50,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   props: {
     strategyBoard: {
@@ -61,10 +61,10 @@ export default defineComponent({
   },
   computed: {
     playerColor() : Color {
-      return this.$store.state.setup.playerColor
+      return this.state.setup.playerColor
     },
     botColor() : Color {
-      return this.$store.state.setup.botColor
+      return this.state.setup.botColor
     },
     rows() : StrategyBoardSlot[][] {
       return this.strategyBoard.getRows()

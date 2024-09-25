@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import { useRoute } from 'vue-router'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import StrategyBoardPreview from '@/components/round/StrategyBoardPreview.vue'
@@ -30,23 +30,21 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
+    const state = useStateStore()
     const route = useRoute()
 
-    const playerColor = store.state.setup.playerColor
-    const navigationState = new NavigationState(route, store)
+    const playerColor = state.setup.playerColor
+    const navigationState = new NavigationState(route, state)
     
-    const round = navigationState.round
-    const actionRound = navigationState.actionRound
-    const strategyBoard = navigationState.strategyBoard
+    const { round, actionRound, strategyBoard } = navigationState
 
-    return { t, store, playerColor, round, actionRound, strategyBoard }
+    return { t, state, playerColor, round, actionRound, strategyBoard }
   },
   computed: {
     backButtonRouteTo() : string {
       try {
         if (this.actionRound == 0) {
-          const lastStrategyRound = this.store.state.rounds[this.round-1].strategyRound.length
+          const lastStrategyRound = this.state.rounds[this.round-1].strategyRound.length
           return '/round/' + this.round + '/strategy/' + lastStrategyRound
         }
         else {

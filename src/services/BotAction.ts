@@ -4,7 +4,7 @@ import HouseholdMats from './HouseholdMats'
 import { cloneDeep } from 'lodash'
 import ActionPriority from './enum/ActionPriority'
 import Action from './enum/Action'
-import findMandatory from 'brdgm-commons/src/util/array/findMandatory'
+import findMandatory from '@brdgm/brdgm-commons/src/util/array/findMandatory'
 import BonusAction from './enum/BonusAction'
 import SlotAction from './enum/SlotAction'
 import SlotActionMappings from './SlotActionMappings'
@@ -100,10 +100,10 @@ export default class BotAction {
       switch (bonusAction.bonusAction) {
         case BonusAction.COIN_1:
           this._coins += 1
-          break;
+          break
         case BonusAction.COIN_2:
           this._coins += 2
-          break;
+          break
         default:
           // no automatic action
       }
@@ -118,9 +118,9 @@ export default class BotAction {
       case SlotAction.ATTACK_1_COIN:
       case SlotAction.TAX_1_COIN:
       case SlotAction.BUILD_1_COIN:
-        return true;
+        return true
       default:
-        return false;
+        return false
     }
   }
 

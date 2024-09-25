@@ -1,4 +1,4 @@
-import { CardDeckPersistence } from '@/store'
+import { CardDeckPersistence } from '@/store/state'
 import { shuffle } from 'lodash'
 import Card from './Card'
 import Cards from './Cards'
@@ -16,7 +16,7 @@ export default class CardDeck {
   }
 
   public get activeCard() : Card {
-    return this._pile[0];
+    return this._pile[0]
   }
 
   /**

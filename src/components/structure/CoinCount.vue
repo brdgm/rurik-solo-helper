@@ -8,7 +8,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
 import AppIcon from './AppIcon.vue'
 
 export default defineComponent({
@@ -18,8 +17,7 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const store = useStore()
-    return { t, store }
+    return { t }
   },
   props: {
     value: {

@@ -6,7 +6,6 @@ import HouseholdMats from '@/services/HouseholdMats'
 import StrategyBoard from '@/services/StrategyBoard'
 import { Round, State, StrategyRound } from '@/store'
 import { RouteLocation } from 'vue-router'
-import { Store } from 'vuex'
 
 export default class NavigationState {
 
@@ -20,12 +19,12 @@ export default class NavigationState {
   readonly strategyBoard : StrategyBoard
   readonly actionRound : number
 
-  constructor(route : RouteLocation, store : Store<State>) {
-    this.difficultyLevel = store.state.setup.difficultyLevel
+  constructor(route : RouteLocation, state : State) {
+    this.difficultyLevel = state.setup.difficultyLevel
 
     // card deck
     this.round = parseInt(route.params['round'] as string)
-    const roundPersistence = this.getRoundPersistence(this.round, store)
+    const roundPersistence = this.getRoundPersistence(this.round, state)
     this.cardDeck = CardDeck.fromPersistence(roundPersistence.cardDeck)
     this.actionPriority = roundPersistence.actionPriority
 
@@ -37,7 +36,7 @@ export default class NavigationState {
     if (route.name == 'StrategyPhase') {
       this.strategyRound = parseInt(route.params['strategyRound'] as string)
       const strategyRoundPersistence = this.getStrategyRoundPersistence(
-        roundPersistence, this.strategyRound, store)
+        roundPersistence, this.strategyRound, state)
       botCoins = strategyRoundPersistence.botCoins
       strategyBoard = StrategyBoard.fromPersistence(strategyRoundPersistence.strategyBoard)
     }
@@ -76,7 +75,7 @@ export default class NavigationState {
           bonusActions = householdMat.priorities
         }
         else {
-          const lastRound = store.state.rounds[this.round - 2]
+          const lastRound = state.rounds[this.round - 2]
           const lastActionRoundBot = lastRound.actionRoundBot[lastRound.actionRoundBot.length - 1]
           if (lastActionRoundBot) {
             bonusActions = lastActionRoundBot.bonusActions
@@ -107,12 +106,11 @@ export default class NavigationState {
     this.strategyBoard = strategyBoard
   }
 
-  private getRoundPersistence(round : number, store : Store<State>) : Round {
-    const state = store.state
+  private getRoundPersistence(round : number, state : State) : Round {
     let roundPersistence = state.rounds[round - 1]
     if (!roundPersistence) {
       // should never happen
-      console.log('Unable to get persistence for round: ' + round)
+      console.log(`Unable to get persistence for round: ${round}`)
       roundPersistence = {
         round: round,
         cardDeck: CardDeck.new().toPersistence(),
@@ -125,15 +123,15 @@ export default class NavigationState {
     return roundPersistence
   }
 
-  private getStrategyRoundPersistence(round : Round, strategyRound : number, store : Store<State>) : StrategyRound {
+  private getStrategyRoundPersistence(round : Round, strategyRound : number, state : State) : StrategyRound {
     let strategyRoundPersistence = strategyRound > 0 ? round.strategyRound[strategyRound-1] : undefined
     if (!strategyRoundPersistence) {
       let botCoins = 0
       if (round.round == 1) {
-        botCoins = store.state.setup.botCoins
+        botCoins = state.setup.botCoins
       }
       else {
-        const previousClaim = store.state.claim[round.round - 2]
+        const previousClaim = state.claim[round.round - 2]
         if (previousClaim) {
           botCoins = previousClaim.botCoins
         }

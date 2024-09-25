@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
 import Expansion from '@/services/enum/Expansion'
 import CardDeck from '../../services/CardDeck'
@@ -28,15 +28,15 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   computed: {
     hasStoneBlade() : boolean {
-      return this.$store.state.setup.expansions.includes(Expansion.STONE_BLADE);
+      return this.state.setup.expansions.includes(Expansion.STONE_BLADE)
     },
     startingRegions() : Region[] {
-      const cardDeck = CardDeck.fromPersistence(this.$store.state.setup.cardDeck)
+      const cardDeck = CardDeck.fromPersistence(this.state.setup.cardDeck)
       return cardDeck.activeCard.locationOrder.filter(region => region != Region.KIEV)
     },
     leaderStartRegion() : string {

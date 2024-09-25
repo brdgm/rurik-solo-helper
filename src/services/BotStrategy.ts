@@ -1,10 +1,10 @@
-import Card, { CardPriority, AdvisorAction } from './Card';
-import Player from './enum/Player';
-import StrategyBoard from './StrategyBoard';
-import ActionPriority from './enum/ActionPriority';
-import { StrategyBoardColumn, StrategyBoardSlot } from '@/store';
-import Advisor from './enum/Advisor';
-import Action from './enum/Action';
+import Card, { CardPriority, AdvisorAction } from './Card'
+import Player from './enum/Player'
+import StrategyBoard from './StrategyBoard'
+import ActionPriority from './enum/ActionPriority'
+import { StrategyBoardColumn, StrategyBoardSlot } from '@/store/state'
+import Advisor from './enum/Advisor'
+import Action from './enum/Action'
 
 /**
  * Bot implementation for picking slots on strategy board.
@@ -38,7 +38,7 @@ export default class BotStrategy {
     for (const action of actionOrder) {
       const column = board.getColumn(action)
       if (this.placeAdvisorInColumn(board, column, advisorAction.advisor, advisorAction.coin ?? false)) {
-        break;
+        break
       }
     }
   }
@@ -89,7 +89,7 @@ export default class BotStrategy {
   private getCardPriority(card : Card, actionPriority : ActionPriority) : CardPriority {
     const result = card.priorities.find(item => item.priority == actionPriority)
     if (!result) {
-      throw new Error("Invalid priority: " + actionPriority)
+      throw new Error(`Invalid priority: ${actionPriority}`)
     }
     return result
   }

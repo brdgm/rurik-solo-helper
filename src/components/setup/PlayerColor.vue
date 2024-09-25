@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStore } from '@/store'
+import { useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
 import Color from '@/services/enum/Color'
 
@@ -25,25 +25,25 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    useStore()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   computed: {
     colors() : Color[] {
       return Object.values(Color)
-          .filter(color => color != this.$store.state.setup.botColor)
+          .filter(color => color != this.state.setup.botColor)
     },
     selectedColor() : Color {
-      return this.$store.state.setup.playerColor
+      return this.state.setup.playerColor
     }
   },
   methods: {
     updatePlayerColor(color: Color) {
-      this.$store.commit('setupPlayerColor', color)
+      this.state.setupPlayerColor(color)
     },
     updatePlayerColorInput(event: Event) {
       const color = (event.target as HTMLInputElement).value as Color
-      this.$store.commit('setupPlayerColor', color)
+      this.state.setupPlayerColor(color)
     }
   }
 })
