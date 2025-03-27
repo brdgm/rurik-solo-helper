@@ -247,8 +247,6 @@
     "next": "Next",
     "abortGame": "Abort Game",
     "abortGameConfirm": "Aborting the running game - are you sure?",
-    "finishGame": "Finish Game",
-    "finishGameConfirm": "Finishing this game - are you sure?",
     "endGame": "End Game",
     "endGameConfirm": "End this game and return to home screen - are you sure?",
     "cancel": "Cancel",
