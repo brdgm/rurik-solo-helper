@@ -131,7 +131,9 @@ const householdMats = [
 ]
 
 const householdMatsMap = new Map<DifficultyLevel,HouseholdMat>()
-householdMats.forEach(mat => householdMatsMap.set(mat.difficultyLevel, mat))
+for (const mat of householdMats) {
+  householdMatsMap.set(mat.difficultyLevel, mat)
+}
 
 export default {
 
