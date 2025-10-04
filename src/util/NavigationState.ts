@@ -23,7 +23,7 @@ export default class NavigationState {
     this.difficultyLevel = state.setup.difficultyLevel
 
     // card deck
-    this.round = parseInt(route.params['round'] as string)
+    this.round = Number.parseInt(route.params['round'] as string)
     const roundPersistence = this.getRoundPersistence(this.round, state)
     this.cardDeck = CardDeck.fromPersistence(roundPersistence.cardDeck)
     this.actionPriority = roundPersistence.actionPriority
@@ -34,7 +34,7 @@ export default class NavigationState {
 
     // strategy board
     if (route.name == 'StrategyPhase') {
-      this.strategyRound = parseInt(route.params['strategyRound'] as string)
+      this.strategyRound = Number.parseInt(route.params['strategyRound'] as string)
       const strategyRoundPersistence = this.getStrategyRoundPersistence(
         roundPersistence, this.strategyRound, state)
       botCoins = strategyRoundPersistence.botCoins
@@ -46,7 +46,7 @@ export default class NavigationState {
 
     // action rounds player / bot
     if (route.name == 'ActionPhasePlayer') {
-      this.actionRound = parseInt(route.params['actionRound'] as string)
+      this.actionRound = Number.parseInt(route.params['actionRound'] as string)
       if (this.actionRound == 0) {
         const lastStrategyRound = roundPersistence.strategyRound[roundPersistence.strategyRound.length - 1]
         if (lastStrategyRound) {
@@ -63,7 +63,7 @@ export default class NavigationState {
       }
     }
     else if (route.name == 'ActionPhaseBot') {
-      this.actionRound = parseInt(route.params['actionRound'] as string)
+      this.actionRound = Number.parseInt(route.params['actionRound'] as string)
       const lastActionRoundPlayer = roundPersistence.actionRoundPlayer[this.actionRound]
       if (lastActionRoundPlayer) {
         botCoins = lastActionRoundPlayer.botCoins

@@ -37,7 +37,7 @@ export default defineComponent({
   },
   methods: {
     updateDifficultyLevel(event: Event) {
-      const level = parseInt((event.target as HTMLInputElement).value)
+      const level = Number.parseInt((event.target as HTMLInputElement).value)
       this.state.setup.difficultyLevel = level
     }
   }
