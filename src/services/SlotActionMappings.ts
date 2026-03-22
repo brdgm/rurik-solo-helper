@@ -115,7 +115,9 @@ const mappings = [
 ]
 
 const mappingsMap = new Map<SlotAction,SlotActionMapping>()
-mappings.forEach(mapping => mappingsMap.set(mapping.slotAction, mapping))
+for (const mapping of mappings) {
+  mappingsMap.set(mapping.slotAction, mapping)
+}
 
 export default {
 
