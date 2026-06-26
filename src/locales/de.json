@@ -45,8 +45,8 @@
       "steps": {
         "title": "Weitere Schritte",
         "neutralTroops": "<b>Neutrale Truppen</b>: Wähle eine nicht verwendete Farbe und stelle je 1 Truppe dieser Farbe auf die 5 übrigen bespielten Regionen.",
-        "playerTroops": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst Sie aber nicht nach {region1}, {region2} oder {region3} stellen.",
-        "playerTroopsStoneBlade": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst Sie aber nicht nach {region1}, {region2} oder {region3} stellen (<i>außer du bekommst Gebäude oder Truppen durch eine Erbschaft, die sie in diese Region stellt</i>)."
+        "playerTroops": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst sie aber nicht nach {region1}, {region2} oder {region3} stellen.",
+        "playerTroopsStoneBlade": "Stelle <b>deine Truppen und den Anführer</b> auf wie üblich, du darfst sie aber nicht nach {region1}, {region2} oder {region3} stellen (<i>außer du bekommst Gebäude oder Truppen durch eine Erbschaft, die sie in diese Region stellt</i>)."
       }
     }
   },
@@ -74,7 +74,7 @@
     "label": "Bot:",
     "stealGiveCoin": {
       "title": "Münze stehlen/geben",
-      "text": "Wenn dein Anführer Boris die Aufständischen angreift, kann er eine Münze von ihnen stehlen. Die Aufständischen können Münzen durch Kriegsbeute-MArker oder der Anführerin Predslava bekommen.",
+      "text": "Wenn dein Anführer Boris die Aufständischen angreift, kann er eine Münze von ihnen stehlen. Die Aufständischen können Münzen durch Kriegsbeute-Marker oder die Anführerin Predslava bekommen.",
       "stealCoin": "Münze stehlen",
       "giveCoin": "Münze geben"
     }
@@ -152,7 +152,7 @@
     "introText": "Schritte der Anspruchsphase für die Aufständischen:",
     "priority": {
       "title": "Priorität zuweisen",
-      "questionAttack": "Besetzt du mehr Regionen aus die Aufständischen?",
+      "questionAttack": "Besetzt du mehr Regionen als die Aufständischen?",
       "questionBuild": "Hast du mehr Gebäude in angrenzenden Regionen als die Aufständischen?",
       "questionTax": "Hast du mehr Güter auf deinem Boot als die Aufständischen?",
       "question": {
@@ -186,8 +186,8 @@
       "warfare": "<b>Kriegsleiste</b>: Normale Wertung",
       "coins": "<b>Münzen</b>: {coinsVP} Siegpunkt für {botCoins} Münzen. | <b>Münzen</b>: {coinsVP} Siegpunkte für {botCoins} Münzen.",
       "coinsNote": "<i>Die gewerteten Münzen zählen nicht zur zweiten Auflösung eines Gleichstands für die meisten Münzen.</i>",
-      "goodsStoneBlade": "<b>Güter auf dem Dock</b>: 1 Siegpunkt pro 3 Güter und/oder Handelsvorteilsmarker auf ihrem Dock <i>(nicht auf Ihrem Boot)</i>, aufgerundet.",
-      "goods": "<b>Güter auf dem Dock</b>: 1 Siegpunkt pro 3 Güter auf ihrem Dock <i>(nicht auf Ihrem Boot)</i>, aufgerundet."
+      "goodsStoneBlade": "<b>Güter auf dem Dock</b>: 1 Siegpunkt pro 3 Güter und/oder Handelsvorteilsmarker auf ihrem Dock <i>(nicht auf ihrem Boot)</i>, aufgerundet.",
+      "goods": "<b>Güter auf dem Dock</b>: 1 Siegpunkt pro 3 Güter auf ihrem Dock <i>(nicht auf ihrem Boot)</i>, aufgerundet."
     }
   },
   "color": {
@@ -221,7 +221,7 @@
     "gleb": {
       "name": "Gleb",
       "lore": "Nachdem er einen Mordversuch seines Bruders Swjatopolk überlebt hat, ist Gleb seinen Geschwistern gegenüber misstrauisch geworden. Er entkommt einer Gefangenschaft, indem er neue Heere und seine Verbündeten in den Reihen der Kirche mobilisiert, und sein Einfluss steigt mit jedem Zug.",
-      "ability": "Sobald du die Aufständischen in Glebs Region angreifst, prüft deine Verluste zweimal.",
+      "ability": "Sobald du die Aufständischen in Glebs Region angreifst, prüfe deine Verluste zweimal.",
       "abilityEndOfRound": "Decke am Ende jeder Runde 1 Erbschaft auf und ziehe Gleb in die gleiche Region."
     },
     "maria": {
