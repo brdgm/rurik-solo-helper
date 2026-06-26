@@ -144,7 +144,7 @@
       }
     },
     "scheme": {
-      "text1": "The Rebellion has unlocked a new bonus action an gained a coin. It does not draw a scheme card."
+      "text1": "The Rebellion has unlocked a new bonus action and gained a coin. It does not draw a scheme card."
     }
   },
   "claim": {
@@ -154,7 +154,7 @@
       "title": "Assign Priority",
       "questionAttack": "Do you occupy more regions than the Rebellion?",
       "questionBuild": "Do you have structures in more adjacent regions than the Rebellion?",
-      "questionTax": "Do you have more goods on your boat then the Rebellion?",
+      "questionTax": "Do you have more goods on your boat than the Rebellion?",
       "question": {
         "yes": "Yes",
         "no": "No"
@@ -186,8 +186,8 @@
       "warfare": "<b>Warfare Track</b>: Normal Scoring",
       "coins": "<b>Coins</b>: Score {coinsVP} victory point for {botCoins} coins. | <b>Coins</b>: Score {coinsVP} victory points for {botCoins} coins.",
       "coinsNote": "<i>The coins scored do not count toward the second tiebreaker for most coins.</i>",
-      "goodsStoneBlade": "<b>Goods on Dock</b>: Score one victory point for every three goods and/or trade boon tokens on on their dock <i>(i.e. not on their boat)</i>, rounded up.",
-      "goods": "<b>Goods on Dock</b>: Score one victory point for every three goods on on their dock <i>(i.e. not on their boat)</i>, rounded up."
+      "goodsStoneBlade": "<b>Goods on Dock</b>: Score one victory point for every three goods and/or trade boon tokens on their dock <i>(i.e. not on their boat)</i>, rounded up.",
+      "goods": "<b>Goods on Dock</b>: Score one victory point for every three goods on their dock <i>(i.e. not on their boat)</i>, rounded up."
     }
   },
   "color": {
@@ -216,7 +216,7 @@
       "name": "Sviatopolk",
       "lore": "Sviatopolk narrowly avoided imprisonment for plotting against his father’s rule. He has now initiated a full-scale rebellion across the realm, and his more faithful siblings have been tasked by Vladimir with quashing the upstart rebels.",
       "ability": "When Sviatopolk attacks you, the Rebellion reveals one less scheme card.",
-      "abilityEndOfRound": "At the end of each round, the Rebellion muster one troop in Sviatopolks region."
+      "abilityEndOfRound": "At the end of each round, the Rebellion musters one troop in Sviatopolk’s region."
     },
     "gleb": {
       "name": "Gleb",
