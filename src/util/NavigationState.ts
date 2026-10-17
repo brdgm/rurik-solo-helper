@@ -4,7 +4,7 @@ import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import { HouseholdMatPriority } from '@/services/HouseholdMat'
 import HouseholdMats from '@/services/HouseholdMats'
 import StrategyBoard from '@/services/StrategyBoard'
-import { Round, State, StrategyRound } from '@/store'
+import { Round, State, StrategyRound } from '@/store/state'
 import { RouteLocation } from 'vue-router'
 
 export default class NavigationState {
